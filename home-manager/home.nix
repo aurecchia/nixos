@@ -13,11 +13,10 @@
     # inputs.nix-colors.homeManagerModule
 
     # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
     ./i3.nix
     ./git.nix
     ./firefox.nix
-    ./nvim.nix
+    ./nvim
   ];
 
   nixpkgs = {
