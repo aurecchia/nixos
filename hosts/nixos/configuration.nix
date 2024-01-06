@@ -13,6 +13,7 @@
       ./hardware-configuration.nix
 
       ./gui.nix
+      ./pipewire.nix
 	
       inputs.home-manager.nixosModules.home-manager
     ];
@@ -63,7 +64,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-	nix.settings.experimental-features = [ "nix-command" "flakes" ];	
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];	
 	
 
   # List packages installed in system profile. To search, run:
