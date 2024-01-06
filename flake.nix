@@ -5,6 +5,8 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
 
+    hardware.url = "github:nixos/nixos-hardware";
+
     # Home manager
     home-manager = {
       url = "github:nix-community/home-manager/release-23.05";
@@ -31,7 +33,7 @@
       nixosConfigurations = {
 	nixos = nixpkgs.lib.nixosSystem {
 	  specialArgs = { inherit inputs outputs; };
-	  modules = [ ./nixos/configuration.nix ];
+	  modules = [ ./hosts/nixos/configuration.nix ];
 	};
       };
     };

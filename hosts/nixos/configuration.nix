@@ -6,7 +6,11 @@
 
 {
   imports =
-    [ ./hardware-configuration.nix
+    [ inputs.hardware.nixosModules.common-cpu-amd
+      inputs.hardware.nixosModules.common-gpu-amd
+      inputs.hardware.nixosModules.common-pc-ssd
+      
+      ./hardware-configuration.nix
 
       ./gui.nix
 	
@@ -17,7 +21,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nixos";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -45,12 +49,15 @@
     LC_TIME = "de_CH.UTF-8";
   };
 
+  programs.zsh.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.auri = {
     isNormalUser = true;
     description = "Alessio Aurecchia";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
+    shell = pkgs.zsh;
   };
 
   # Allow unfree packages
@@ -97,9 +104,7 @@
 
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs; };
-    users = {
-      auri = import ../home/home.nix;
-    };
+    users.auri = import ../../home/home.nix;
   };
 
   # This value determines the NixOS release from which the default
