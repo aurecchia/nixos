@@ -98,7 +98,7 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs; };
     users = {
-      auri = import ../home-manager/home.nix;
+      auri = import ../home/home.nix;
     };
   };
 
