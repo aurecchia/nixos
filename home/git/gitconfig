@@ -1,0 +1,66 @@
+[user]
+    name = Alessio Aurecchia
+    email = alessio@aurecchia.ch
+    signingkey = A3092262020004B8
+[commit]
+    gpgsign = true
+    verbose = true
+[rebase]
+    abbreviatedCommands = true
+    autosquash = true
+    autostash = true
+    missingCommitsCheck = warn
+[gpg]
+    program = gpg2
+[alias]
+    amend = commit -a --amend --no-edit
+    cb = checkout -b
+    ci = commit
+    co = checkout
+    d = diff
+    fix = commit --fixup HEAD
+    lg = !"git --no-pager log --graph --oneline --date=human -n 20"
+    lga = !"git lg --exclude '*/renovate/*' --all"
+    main = checkout origin/main
+    pf = push --force-with-lease origin HEAD
+    pu = push -u origin
+    re = rebase -i origin/main --update-refs
+    ru = remote update --prune
+    s = status --short --branch --ahead-behind
+    sw = sw
+    wip = commit -am "wip"
+
+    lgnice = \
+      log --graph --abbrev-commit --decorate -n 30 \
+      --format=format:'%C(bold blue)%h%C(reset)%C(auto)%d%C(reset) %C(auto)%s%C(reset) %C(dim green)(%ae)%C(reset)'
+[push]
+    default = matching
+[pull]
+    ff = only
+[init]
+    defaultBranch = main
+[merge]
+    tool = vimdiff3
+    conflictstyle = zdiff3
+[mergetool "vimdiff3"]
+    path = nvim
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
+[pager]
+    branch = false
+[mergetool]
+    keepBackup = false
+[delta]
+    navigate = true
+    features = sideb-by-side line-numbers decorations
+    whitespace-error-style = 22 reverse
+[delta "decorations"]
+    zero-syle = auto
+    commit-decoration-style = bold ul
+    minus-style = bold red
+    minus-empth-style = bold reverse red
+    plus-style = bold green
+    plus-emph-style = bold reverse green
+    file-style = bold yellow ul
+    file-decoration-style = none
+    hunk-header-decoration-style = none

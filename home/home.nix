@@ -14,7 +14,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     ./i3.nix
-    ./git.nix
+    ./git
     ./firefox.nix
     ./nvim
     ./zsh.nix

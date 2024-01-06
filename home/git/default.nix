@@ -6,4 +6,6 @@
     userName = "Alessio Aurecchia";
     userEmail = "alessio@aurecchia.ch";
   };
+
+  extraConfig = builtins.readFile ./gitconfig;
 }
