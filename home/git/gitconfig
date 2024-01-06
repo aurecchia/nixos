@@ -2,9 +2,9 @@
     name = Alessio Aurecchia
     email = alessio@aurecchia.ch
     signingkey = A3092262020004B8
-[commit]
-    gpgsign = true
-    verbose = true
+# [commit]
+#     gpgsign = true
+#     verbose = true
 [rebase]
     abbreviatedCommands = true
     autosquash = true
