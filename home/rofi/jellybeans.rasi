@@ -1,0 +1,157 @@
+/**
+ * rofi -dump-theme output.
+ * Rofi version: 1.7.3
+ **/
+* {
+    foreground:                  #e8e8d3;
+    background:                  #151515;
+    separatorcolor:              #333333;
+    border-color:                #333333;
+    normal-foreground:           var(foreground);
+    normal-background:           var(background);
+    urgent-foreground:           var(foreground);
+    urgent-background:           #cf614c;
+    active-foreground:           var(foreground);
+    active-background:           var(background);
+    selected-normal-foreground:  #f0a0c0;
+    selected-normal-background:  #302028;
+    selected-active-foreground:  var(background);
+    selected-active-background:  rgba ( 0, 95, 135, 100 % );
+    selected-urgent-foreground:  var(background);
+    selected-urgent-background:  rgba ( 215, 95, 0, 100 % );
+    alternate-normal-foreground: var(foreground);
+    alternate-normal-background: #1a1a1a;
+    alternate-active-foreground: var(active-foreground);
+    alternate-active-background: var(active-background);
+    alternate-urgent-foreground: var(urgent-foreground);
+    alternate-urgent-background: rgba ( 208, 208, 208, 100 % );
+
+    background-color:  transparent;
+    text-color:        @foreground;
+
+    margin:  0;
+    padding: 0;
+    spacing: 0;
+}
+window {
+    padding:          0;
+    background-color: var(background);
+    border:           0;
+    border-radius:    8;
+}
+mainbox {
+    padding: 0;
+    border:  0;
+}
+message {
+    padding:      1px ;
+    border-color: var(separatorcolor);
+    border:       2px 0px 0px ;
+}
+textbox {
+    text-color: var(foreground);
+    padding: 0 0.2em;
+}
+listview {
+    padding:      0;
+    spacing:      0;
+    fixed-height: 0;
+    scrollbar:    true;
+    border-color: var(separatorcolor);
+    border:       3px 0px 0px ;
+}
+element {
+    padding: 0.25em 0.4em;
+    border:  0;
+    height: 2em;
+}
+element normal.normal {
+    background-color: var(normal-background);
+    text-color:       var(normal-foreground);
+}
+element normal.urgent {
+    background-color: var(urgent-background);
+    text-color:       var(urgent-foreground);
+}
+element normal.active {
+    background-color: var(active-background);
+    text-color:       var(active-foreground);
+}
+element selected.normal {
+    background-color: var(selected-normal-background);
+    text-color:       var(selected-normal-foreground);
+}
+element selected.urgent {
+    background-color: var(selected-urgent-background);
+    text-color:       var(selected-urgent-foreground);
+}
+element selected.active {
+    background-color: var(selected-active-background);
+    text-color:       var(selected-active-foreground);
+}
+element alternate.normal {
+    background-color: var(alternate-normal-background);
+    text-color:       var(alternate-normal-foreground);
+}
+element alternate.urgent {
+    background-color: var(alternate-urgent-background);
+    text-color:       var(alternate-urgent-foreground);
+}
+element alternate.active {
+    background-color: var(alternate-active-background);
+    text-color:       var(alternate-active-foreground);
+}
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+    padding: 0 0.4em;
+}
+element-icon {
+    size: 24px;
+}
+scrollbar {
+    width:        0.4em;
+    padding:      0;
+    handle-width: 0.4em;
+    border:       0;
+    background-color: var(alternate-active-background);
+}
+mode-switcher {
+    border-color: var(separatorcolor);
+    border:       2px 0px 0px ;
+}
+button selected {
+    background-color: var(selected-normal-background);
+    text-color:       var(selected-normal-foreground);
+}
+inputbar {
+    padding:    0.2em 0.4em;
+    spacing:    0;
+    text-color: var(normal-foreground);
+    children:   [ icon-search, "entry","case-indicator" ];
+}
+
+icon-search {
+    expand:     false;
+    filename:   "search";
+    size: 24px;
+}
+
+case-indicator {
+    spacing:    0;
+    text-color: var(normal-foreground);
+}
+entry {
+    padding: 0 0.2em;
+    text-color: var(normal-foreground);
+}
+prompt {
+    padding: 0 0.2em;
+    text-color: var(normal-foreground);
+}
+textbox-prompt-colon {
+    margin:     0px;
+    expand:     false;
+    str:        ":";
+    text-color: var(normal-foreground);
+}
