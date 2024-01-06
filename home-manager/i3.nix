@@ -3,13 +3,18 @@
 let
   mod = "Mod4";
 in {
-  xsession.enable = true;
-  xsession.windowManager.i3 = {
+  xsession = {
     enable = true;
 
-    config = {
-      modifier = mod;
+    windowManager.i3 = {
+      enable = true;
+   
+      config = {
+        modifier = mod;
+      };
     };
+
+    initExtra = "xset r rate 160 60";
   };
 }
 
