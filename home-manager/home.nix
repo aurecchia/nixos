@@ -54,6 +54,11 @@
   programs.home-manager.enable = true;
   programs.git.enable = true;
 
+  programs.kitty = {
+    enable = true;
+    extraConfig = builtins.readFile ./kitty/kitty.conf;
+  };
+
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
