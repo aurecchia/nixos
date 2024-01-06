@@ -16,6 +16,7 @@
     # ./nvim.nix
     ./i3.nix
     ./git.nix
+    ./firefox.nix
   ];
 
   nixpkgs = {
