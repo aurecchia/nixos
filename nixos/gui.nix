@@ -6,7 +6,10 @@
     libinput.enable = true;
 
     layout = "us";
+    xkbVariant = "";
     # TODO: Add xkboptions
+
+    resolutions = [ { x = 1920; y = 1080; } ];
 
     displayManager = {
       lightdm.enable = true;
