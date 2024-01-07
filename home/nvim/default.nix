@@ -14,6 +14,25 @@
   programs.neovim = {
     enable = true;
     vimAlias = true;
+    vimdiffAlias = true;
+
+    plugins = with pkgs.vimPlugins; [
+      fzf-vim
+      readline-vim
+      vim-closetag
+      traces-vim
+      vim-fugitive
+      vim-commentary
+      vim-git
+      vim-gitgutter
+      vim-surround
+      nvim-lspconfig
+      goyo-vim
+      jellybeans-nvim
+      lightline-vim
+      firenvim
+      vim-nix
+    ];
 
     extraConfig = builtins.readFile ./init.vim;
   };

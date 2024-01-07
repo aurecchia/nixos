@@ -99,3 +99,6 @@ vnoremap gs y:%s/<C-r>"//g<Left><Left>
 nnoremap <leader>* yaw:Rg <C-r>"<CR>
 vnoremap * y:Rg <C-r>"<CR>
 
+colorscheme jellybeans-nvim
+
+
