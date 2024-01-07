@@ -12,6 +12,8 @@ in {
       config = {
         modifier = mod;
       };
+
+      extraConfig = builtings.readFile ./config;
     };
 
     initExtra = "xset r rate 160 60";

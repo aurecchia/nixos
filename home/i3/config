@@ -1,0 +1,300 @@
+set $mod Mod4
+
+# Font
+font pango:JetBrains Mono 10
+# font pango:DejaVu Sans Mono 8
+
+# Window management
+bindsym $mod+q kill
+floating_modifier $mod
+
+# General
+focus_follows_mouse no
+# Border overidden below because of a bug
+# default_border pixel 4
+hide_edge_borders both
+focus_wrapping no
+
+set $dmenu_opts -fn "JetBrains Mono NL-11:Bold" -nb "#000000"
+
+default_orientation auto
+
+# Launchers
+bindsym $mod+space exec rofi -show run
+bindsym $mod+Return exec rofi -show drun -show-icons
+bindsym $mod+b bar mode toggle
+bindsym $mod+c exec find ~/.scripts -executable -type f | dmenu $dmenu_opts | /bin/sh &
+bindsym $mod+e exec emoji-picker
+bindsym $mod+f exec thunar
+bindsym $mod+g exec ~/.scripts/i3-wm-scripts/nextfind.py $dmenu_opts -l 10
+bindsym $mod+t exec kitty
+bindsym $mod+w exec firefox-dev
+bindsym $mod+y exec $TERMINAL --role "dropdown"
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Splits
+bindsym $mod+s split toggle
+
+bindsym $mod+F11 fullscreen toggle
+
+# Layout
+bindsym $mod+Shift+w layout tabbed
+bindsym $mod+Shift+s layout stacking
+bindsym $mod+Shift+e layout toggle split
+bindsym $mod+Shift+space floating toggle
+
+# Workspaces
+set $ws1 "1: dev"
+set $ws2 "2: term"
+set $ws3 "3: www"
+set $ws4 "4: slack"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10: spotify"
+
+set $center_screen "HDMI-A-0"
+set $left_screen "DisplayPort-2"
+set $right_screen "DisplayPort-1"
+
+workspace $ws1 output $center_screen
+workspace $ws2 output $center_screen
+workspace $ws3 output $center_screen
+workspace $ws4 output $left_screen
+workspace $ws5 output $center_screen
+workspace $ws10 output $right_screen
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+bindsym $mod+Shift+n move container to workspace next_on_output
+bindsym $mod+Shift+p move container to workspace prev_on_output
+
+bindsym $mod+n workspace next_on_output
+bindsym $mod+p workspace prev_on_output
+
+# i3
+bindsym $mod+Shift+r restart
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Windows
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [title="Preferences$"] floating enable
+for_window [title="Gpick"] floating enable
+for_window [title="Master Password"] floating enable
+
+# Fix floating popups in Jetbrains products
+for_window [class="^jetbrains-.+"][window_type=dialog] focus
+for_window [instance="sun-awt-X11-XWindowPeer"] border pixel 0
+for_window [instance="sun-awt-X11-XWindowPeer"] floating enable
+for_window [class="jetbrains-toolbox"] floating enable
+
+
+# resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
+mode "resize" {
+        bindsym j exec "~/repos/i3-resizer/i3-resizer.py down"
+        bindsym h exec "~/repos/i3-resizer/i3-resizer.py left"
+        bindsym k exec "~/repos/i3-resizer/i3-resizer.py up"
+        bindsym l exec "~/repos/i3-resizer/i3-resizer.py right"
+
+        bindsym Escape mode "default"
+}
+
+# System mode
+set $mode_system "System lock (l), poweroff (p), reboot (r), suspend (s), hibernate (h)"
+bindsym $mod+Shift+q mode $mode_system
+mode $mode_system {
+        bindsym l exec --no-startup-id nop
+        bindsym p exec --no-startup-id systemctl poweroff
+        bindsym r exec --no-startup-id systemctl reboot
+        bindsym s mode "default"; exec --no-startup-id systemctl suspend
+        bindsym h mode "default"; exec --no-startup-id systemctl hibernate
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+
+set $bar_separator_symbol " / "
+set_from_resource $bar_background   i3.barBackground   #ff0000
+set_from_resource $bar_statusline   i3.barForeground   #ffffff
+set_from_resource $bar_separator    i3.barDimmed       #666666
+
+set_from_resource $focused_bg       i3.focusedBg       #285577
+set_from_resource $focused_fg       i3.focusedFg       #ffffff
+set_from_resource $focused_border   i3.focusedBorder   #285577
+
+set_from_resource $active_bg        i3.activeBg        #222222
+set_from_resource $active_fg        i3.activeFg        #555555
+set_from_resource $active_border    i3.activeBorder    #222222
+
+set_from_resource $inactive_bg      i3.inactiveBg      #1a1a1a
+set_from_resource $inactive_fg      i3.inactiveFg      #555555
+set_from_resource $inactive_border  i3.inactiveBorder  #1a1a1a
+
+set_from_resource $urgent_bg        i3.urgentBg        #900000
+set_from_resource $urgent_fg        i3.urgentFg        #ffffff
+set_from_resource $urgent_border    i3.urgentBorder    #2f343a
+
+set $bar_modifier none
+set $bar_mode dock
+
+bar {
+    modifier $bar_modifier
+    mode $bar_mode
+    font pango:Jetbrains Mono SemiBold 10
+    output HDMI-A-0
+    tray_padding 0
+    tray_output primary
+    position top
+    separator_symbol $bar_separator_symbol
+    status_command i3status
+
+    # Disable mouse wheel
+    bindsym button4 nop
+    bindsym button5 nop
+
+    colors {
+      background $bar_background
+      statusline $bar_statusline
+      separator  $bar_separator
+
+      focused_workspace   $focused_border   $focused_bg   $focused_fg
+      active_workspace    $active_border    $active_bg    $active_fg
+      inactive_workspace  $inactive_border  $inactive_bg  $inactive_fg
+      urgent_workspace    $urgent_border    $urgent_bg    $urgent_fg
+    }
+}
+
+bar {
+    modifier $bar_modifier
+    mode $bar_mode
+    output DisplayPort-1
+    position top
+    separator_symbol $bar_separator_symbol
+    tray_output none
+
+    # Disable mouse wheel
+    bindsym button4 nop
+    bindsym button5 nop
+
+    colors { 
+      background $bar_background
+      statusline $bar_statusline
+      separator  $bar_separator
+
+      focused_workspace   $focused_border   $focused_bg   $focused_fg
+      active_workspace    $active_border    $active_bg    $active_fg
+      inactive_workspace  $inactive_border  $inactive_bg  $inactive_fg
+      urgent_workspace    $urgent_border    $urgent_bg    $urgent_fg
+    }
+}
+
+bar {
+    modifier $bar_modifier
+    mode $bar_mode
+    output DisplayPort-2
+    position top
+    separator_symbol $bar_separator_symbol
+    tray_output none
+
+    # Disable mouse wheel
+    bindsym button4 nop
+    bindsym button5 nop
+
+    colors { 
+      background $bar_background
+      statusline $bar_statusline
+      separator  $bar_separator
+
+      focused_workspace   $focused_border   $focused_bg   $focused_fg
+      active_workspace    $active_border    $active_bg    $active_fg
+      inactive_workspace  $inactive_border  $inactive_bg  $inactive_fg
+      urgent_workspace    $urgent_border    $urgent_bg    $urgent_fg
+    }
+}
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
+
+# Colors
+# class                 border  backgr. text    indicator child_border
+# client.focused          #000000 #242424 #ffffff #2e9ef4   #000000
+# client.focused_inactive #000000 #242424 #bbbbbb #2e9ef4   #000000
+# client.unfocused        #000000 #242424 #aaaaaa #2e9ef4   #000000
+# client.urgent           #2f343a #900000 #ffffff #900000   #900000
+# client.placeholder      #000000 #0c0c0c #ffffff #000000   #000000
+
+# client.background       #ffffff
+
+# Fix for border issue https://github.com/i3/i3/issues/5149
+for_window [all] border pixel 3
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 9 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 9 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10"
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# bindsym --release Print exec mate-screenshot --interactive
+bindsym --release Print exec mate-screenshot
+bindsym --release Shift+Print exec mate-screenshot --area
+# bindsym --release Print exec scrot --select '%Y-%m-%d_%H-%M-%S_$wx$h.png' -e 'mv $f ~/Pictures/shots/'
+# bindsym --release Shift+Print exec scrot '%Y-%m-%d_%H-%M-%S_$wx$h.png' -e 'mv $f ~/Pictures/shots/'
+
+# exec setxkbmap -option ctrl:nocaps -option altwin:swap_lalt_lwin
+# exec setxkbmap -option altwin:swap_lalt_lwin
+
+#exec xsetroot -solid "#6c7d88"
+# exec xsetroot -solid "#4a4a52"
+# exec xsetroot -solid "#544E5C"
+
