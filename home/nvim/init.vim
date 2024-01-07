@@ -99,6 +99,118 @@ vnoremap gs y:%s/<C-r>"//g<Left><Left>
 nnoremap <leader>* yaw:Rg <C-r>"<CR>
 vnoremap * y:Rg <C-r>"<CR>
 
+" Formatting and Indentation {{{
+
+" enable soft word wrap
+set formatoptions+=tcrqnj1
+set linebreak
+
+set expandtab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+
+" }}}
+
+" Search {{{
+
+set showmatch          " Show matching brackets.
+set ignorecase         " Do case insensitive matching
+set smartcase          " Do smart case matching
+
+set incsearch          " incremental search
+set hlsearch           " highlights searches
+
+" }}}
+ 
+" History {{{
+
+set history=1000
+
+set swapfile
+set directory^=~/.vim/swap/
+
+" set writebackup
+set nobackup
+set backupcopy=auto
+set backupdir=~/.backup/,/tmp//
+
+set undofile
+set undodir=~/.undo/,/tmp//
+
+" }}}
+
+" Syntax Highlighting and Indentation
+
+syntax on
+
+set autoindent
+set copyindent
+set smartindent
+
+" Backspace over everything in insert mode
+set backspace=indent,eol,start
+
+" Show invisibles
+set list
+set listchars=tab:→\ ,trail:•
+set showbreak=↪\ 
+set fillchars+=vert:\│
+
+set textwidth=80
+
+set diffopt=filler,iwhite,vertical
+
+" Autocompletion {{{
+
+set wildmenu
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.o,*.obj,*~
+
+" Longer more descriptive auto-complete prompts
+set completeopt=longest,menuone,preview,noinsert
+set previewheight=5
+set ofu=syntaxcomplete#Complete
+
+set signcolumn=yes
+
+" Poor man's braket expansion
+inoremap (<CR> (<CR>)<Esc>O
+inoremap (;    (<CR>);<Esc>O
+inoremap (,    (<CR>),<Esc>O
+inoremap {<CR> {<CR>}<Esc>O
+inoremap {;    {<CR>};<Esc>O
+inoremap {,    {<CR>},<Esc>O
+inoremap [<CR> [<CR>]<Esc>O
+inoremap [;    [<CR>];<Esc>O
+inoremap [, [<CR>],<Esc>O
+
+" }}}
+
+" Colour {{{
+
 colorscheme jellybeans-nvim
+set colorcolumn=80,120
 
+" }}}
 
+" " Use the closetag plugin only with some files
+" let g:closetag_filenames = "*.html,*.xhtml,*.xml"
+
+" " Default fzf layout
+" " - down / up / left / right
+" let g:fzf_layout = { 'down': '~20%' }
+
+" " Customize fzf colors to match your color scheme
+" let g:fzf_colors =
+" \ { 'fg':      ['fg', 'Normal'],
+"   \ 'bg':      ['bg', 'Normal'],
+"   \ 'hl':      ['fg', 'Comment'],
+"   \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+"   \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+"   \ 'hl+':     ['fg', 'Statement'],
+"   \ 'info':    ['fg', 'PreProc'],
+"   \ 'prompt':  ['fg', 'Conditional'],
+"   \ 'pointer': ['fg', 'Exception'],
+"   \ 'marker':  ['fg', 'Keyword'],
+"   \ 'spinner': ['fg', 'Label'],
+"   \ 'header':  ['fg', 'Comment'] }
