@@ -1,11 +1,4 @@
-set $mod Mod4
-
-# Font
-font pango:JetBrains Mono 10
-# font pango:DejaVu Sans Mono 8
-
 # Window management
-bindsym $mod+q kill
 floating_modifier $mod
 
 # General
@@ -272,22 +265,22 @@ client.background       #ffffff
 # Fix for border issue https://github.com/i3/i3/issues/5149
 for_window [all] border pixel 3
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 9 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 9 -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 9 +5%
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 9 -5%
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 10"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 10"
+# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10"
+# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10"
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+# bindsym XF86AudioPlay exec playerctl play
+# bindsym XF86AudioPause exec playerctl pause
+# bindsym XF86AudioNext exec playerctl next
+# bindsym XF86AudioPrev exec playerctl previous
 
 # bindsym --release Print exec mate-screenshot --interactive
-bindsym --release Print exec mate-screenshot
-bindsym --release Shift+Print exec mate-screenshot --area
+# bindsym --release Print exec mate-screenshot
+# bindsym --release Shift+Print exec mate-screenshot --area
 # bindsym --release Print exec scrot --select '%Y-%m-%d_%H-%M-%S_$wx$h.png' -e 'mv $f ~/Pictures/shots/'
 # bindsym --release Shift+Print exec scrot '%Y-%m-%d_%H-%M-%S_$wx$h.png' -e 'mv $f ~/Pictures/shots/'
 
