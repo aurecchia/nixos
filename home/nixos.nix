@@ -14,12 +14,20 @@
 
     # You can also split up your configuration and import pieces of it here:
     ./i3
+    ./cli.nix
     ./rofi
     ./kitty
     ./git
     ./firefox.nix
     ./nvim
     ./zsh.nix
+  ];
+
+  fonts.fontconfig.enable = true;
+
+  home.packages = with pkgs; [
+    dejavu_fonts
+    jetbrains-mono
   ];
 
   nixpkgs = {
