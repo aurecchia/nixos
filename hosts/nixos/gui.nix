@@ -9,7 +9,9 @@
     xkbVariant = "";
     # TODO: Add xkboptions
 
-    resolutions = [ { x = 1920; y = 1080; } ];
+    resolutions = [
+      { x = 2560; y = 1600; }
+      { x = 1920; y = 1080; } ];
     dpi = 140;
 
     displayManager = {
