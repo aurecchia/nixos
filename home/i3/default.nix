@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, vars, ... }:
 
 let
   mod = "Mod4";
@@ -45,6 +45,12 @@ in {
           forceWrapping = false;
           mouseWarping = true;
         };
+
+        bars =
+          if vars.hostName == "nixos" then
+            []
+          else
+            [];
 
         window = {
           hideEdgeBorders = "both";

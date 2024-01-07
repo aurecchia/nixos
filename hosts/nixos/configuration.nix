@@ -70,8 +70,8 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
-    users.auri = import ../../home/home.nix;
+    extraSpecialArgs = { inherit inputs outputs; vars = { hostName = config.networking.hostName; }; };
+    users.auri = import ../../home/${config.networking.hostName}.nix;
   };
 
   # This value determines the NixOS release from which the default
