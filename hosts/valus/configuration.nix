@@ -21,7 +21,7 @@
 
   networking = {
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-    hostName = "nixos";
+    hostName = "valus";
 
     networkmanager.enable = true;
   };

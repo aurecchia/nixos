@@ -31,10 +31,10 @@
       inherit (self) outputs;
     in {
       nixosConfigurations = {
-	nixos = nixpkgs.lib.nixosSystem {
-	  specialArgs = { inherit inputs outputs; };
-	  modules = [ ./hosts/nixos/configuration.nix ];
-	};
+        valus = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [ ./hosts/valus/configuration.nix ];
+        };
       };
     };
 }
