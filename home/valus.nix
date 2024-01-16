@@ -21,6 +21,7 @@
     ./firefox.nix
     ./nvim
     ./zsh.nix
+    ./jetbrains.nix
   ];
 
   fonts.fontconfig.enable = true;
@@ -29,6 +30,7 @@
     dejavu_fonts
     jetbrains-mono
     xclip
+    dotnet-sdk_8
   ];
 
   nixpkgs = {
