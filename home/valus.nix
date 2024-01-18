@@ -5,12 +5,14 @@
   lib,
   config,
   pkgs,
+  nix-colors,
   ...
 }: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModule
+    nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
     ./i3
@@ -22,13 +24,18 @@
     ./nvim
     ./zsh.nix
     ./jetbrains.nix
+    ./gcloud.nix
   ];
+
+  colorScheme = nix-colors.lib.schemeFromYAML "jellybeans" (builtins.readFile ./jellybeans.yaml);
 
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
     dejavu_fonts
     jetbrains-mono
+    inter
+    dconf
     xclip
     dotnet-sdk_8
   ];
@@ -70,6 +77,23 @@
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
+
+  dconf.settings = {
+    "org/gnome/desktop/background" = {
+      picture-uri-dark = "file://${pkgs.nixos-artwork.wallpapers.nineish-dark-gray.src}";
+    };
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+  };
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.gnome.gnome-themes-extra;
+    };
+  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.05";

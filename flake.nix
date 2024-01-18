@@ -4,6 +4,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs";
 
     hardware.url = "github:nixos/nixos-hardware";
 
@@ -18,6 +19,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-colors.url = "github:misterio77/nix-colors";
+
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
 
@@ -26,13 +29,19 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, ...  } @ inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-colors, ...  } @ inputs:
     let
       inherit (self) outputs;
+      pkgs-unstable = import nixpkgs-unstable {
+        system = "x86_64-linux";
+        config = {
+          allowUnfree = true;
+        };
+      };
     in {
       nixosConfigurations = {
         valus = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = { inherit inputs outputs pkgs-unstable nix-colors; };
           modules = [ ./hosts/valus/configuration.nix ];
         };
       };

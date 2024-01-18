@@ -1,4 +1,4 @@
-{ inputs, outputs, config, pkgs, ... }:
+{ inputs, outputs, config, pkgs, pkgs-unstable, nix-colors, ... }:
 
 {
   imports =
@@ -109,7 +109,12 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; vars = { hostName = config.networking.hostName; }; };
+    extraSpecialArgs = {
+      inherit inputs outputs pkgs-unstable nix-colors;
+      vars = {
+        hostName = config.networking.hostName;
+      };
+    };
     users.auri = import ../../home/${config.networking.hostName}.nix;
   };
 

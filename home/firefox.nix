@@ -8,6 +8,8 @@
 
       settings = {
         "browser.disableResetPrompt" = true;
+        "browser.compactmode.show" = true;
+        "browser.uidensity" = 1;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "browser.shell.checkDefaultBrowser" = false;
         "browser.shell.defaultBrowserCheckCount" = 1;
