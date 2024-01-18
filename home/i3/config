@@ -1,8 +1,8 @@
 default_orientation auto
 
 set $bar_separator_symbol " / "
-set_from_resource $bar_background   i3.barBackground   #ff0000
-set_from_resource $bar_statusline   i3.barForeground   #ffffff
+set_from_resource $bar_background   i3.background      #ff0000
+set_from_resource $bar_statusline   i3.foreground      #ffffff
 set_from_resource $bar_separator    i3.barDimmed       #666666
 
 set_from_resource $focused_bg       i3.focusedBg       #285577
@@ -28,7 +28,7 @@ bar {
     modifier $bar_modifier
     mode $bar_mode
     font pango:Jetbrains Mono SemiBold 10
-    output HDMI-A-0
+    output DisplayPort-2
     tray_padding 0
     tray_output primary
     position top
@@ -54,31 +54,7 @@ bar {
 bar {
     modifier $bar_modifier
     mode $bar_mode
-    output DisplayPort-1
-    position top
-    separator_symbol $bar_separator_symbol
-    tray_output none
-
-    # Disable mouse wheel
-    bindsym button4 nop
-    bindsym button5 nop
-
-    colors { 
-      background $bar_background
-      statusline $bar_statusline
-      separator  $bar_separator
-
-      focused_workspace   $focused_border   $focused_bg   $focused_fg
-      active_workspace    $active_border    $active_bg    $active_fg
-      inactive_workspace  $inactive_border  $inactive_bg  $inactive_fg
-      urgent_workspace    $urgent_border    $urgent_bg    $urgent_fg
-    }
-}
-
-bar {
-    modifier $bar_modifier
-    mode $bar_mode
-    output DisplayPort-2
+    output HDMI-A-0
     position top
     separator_symbol $bar_separator_symbol
     tray_output none

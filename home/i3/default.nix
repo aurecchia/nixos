@@ -26,12 +26,17 @@ let
   mode_resize = "Resize";
   mode_system = "System lock (l), poweroff (p), reboot (r), suspend (s), hibernate (h)";
 in {
+
+  home.packages = with pkgs; [
+    i3status
+  ];
+
   xsession = {
     enable = true;
 
     windowManager.i3 = {
       enable = true;
-   
+
       config = {
         modifier = mod;
 
@@ -46,11 +51,7 @@ in {
           mouseWarping = true;
         };
 
-        bars =
-          if vars.hostName == "nixos" then
-            []
-          else
-            [];
+        bars = [];
 
         window = {
           hideEdgeBorders = "both";
@@ -176,7 +177,6 @@ in {
           "${mod}+Shift+q" = "mode \"${mode_system}\"";
         };
       };
-
 
       extraConfig = builtins.readFile ./config;
     };

@@ -27,9 +27,11 @@
     ./gcloud.nix
   ];
 
-  colorScheme = nix-colors.lib.schemeFromYAML "jellybeans" (builtins.readFile ./jellybeans.yaml);
-
   fonts.fontconfig.enable = true;
+
+  home.file = {
+    ".Xresources".source = ./Xresources;
+  };
 
   home.packages = with pkgs; [
     dejavu_fonts
@@ -38,6 +40,9 @@
     dconf
     xclip
     dotnet-sdk_8
+    slack
+    spotify
+    zathura
   ];
 
   nixpkgs = {
