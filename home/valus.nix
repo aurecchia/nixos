@@ -40,10 +40,20 @@
     dconf
     xclip
     dotnet-sdk_8
+    inkscape
     slack
     spotify
     zathura
   ];
+
+#   programs.redshift = {
+#     enable = true;
+#     location = {
+#       provider = "manual";
+#       latitude = "47.3595";
+#       longitue = "8.6356";
+#     };
+#   };
 
   nixpkgs = {
     # You can add overlays here

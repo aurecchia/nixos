@@ -20,6 +20,10 @@
     };
 
     nix-colors.url = "github:misterio77/nix-colors";
+    solaar = {
+      url = "github:Svenum/Solaar-Flake/latest"; # For latest stable version
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
@@ -29,7 +33,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-colors, ...  } @ inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-colors, solaar, ...  } @ inputs:
     let
       inherit (self) outputs;
       pkgs-unstable = import nixpkgs-unstable {
@@ -42,7 +46,10 @@
       nixosConfigurations = {
         valus = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs pkgs-unstable nix-colors; };
-          modules = [ ./hosts/valus/configuration.nix ];
+          modules = [
+            solaar.nixosModules.default
+            ./hosts/valus/configuration.nix
+          ];
         };
       };
     };

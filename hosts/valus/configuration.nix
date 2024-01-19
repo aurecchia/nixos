@@ -26,6 +26,8 @@
     networkmanager.enable = true;
   };
 
+  programs.nm-applet.enable = true;
+
   time.timeZone = "Europe/Zurich";
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -57,15 +59,27 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];	
 	
   environment.systemPackages = with pkgs; [
+    killall
+    htop
     git
     vim
     wget
     curl
+    xfce.xfconf
     arandr
     polkit_gnome
+    lutris
   ];
 
   programs.thunar.enable = true;
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
+
+  programs.solaar.enable = true;
 
   security.polkit = {
     enable = true;
