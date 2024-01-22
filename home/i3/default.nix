@@ -17,8 +17,8 @@ let
   ws10 = "10: spotify";
 
   # Outputs
-  center_screen = "HDMI-A-0";
-  left_screen = "DisplayPort-2";
+  center_screen = "DisplayPort-2";
+  left_screen = "HDMI-A-0";
 
   right_screen = "DisplayPort-1";
 
@@ -30,6 +30,100 @@ in {
   home.packages = with pkgs; [
     i3status
   ];
+
+  services = {
+    dunst = {
+      enable = true;
+      settings = {
+        global = {
+          follow = "keyboard";
+          width = "(0, 500)";
+          height = 100;
+          offset = "0x24";
+          separator_height = 4;
+          frame_width = 0;
+          separator_color = "#00000000";
+          font = "Iosevka Term 10";
+          format = ''
+            <b>%s</b>
+            %b'';
+          vertical_alignment = "top";
+          show_age_threshold = "5m";
+          icon_position = "left";
+          max_icon_size = 60;
+          icon_path = "${pkgs.zafiro-icons}/share/icons/Zafiro-icons";
+          enable_recursive_icon_lookup = "true";
+          dmenu = "${pkgs.rofi}/bin/rofi -dmenu -p dunst";
+          mouse_left_click = "close_current";
+          mouse_middle_click = "context";
+          mouse_right_click = "do_action";
+          fullscreen = "pushback";
+          timeout = "30s";
+          startup_notification = false;
+          markup = "full";
+          foreground = "#eceff4";
+        };
+        urgency_low = { background = "#4c566acc"; };
+        urgency_normal = { background = "#5e81accc"; };
+        urgency_critical = {
+          background = "#bf616acc";
+          fullscreen = "show";
+          timeout = 0;
+        };
+      };
+    };
+    picom = {
+      enable = true;
+      fade = true;
+      fadeDelta = 3;
+      # inactiveDim = "0.2";
+      shadow = true;
+      shadowOffsets = [ (-4) (-4) ];
+      shadowOpacity = 0.4;
+      shadowExclude = [
+        # unknown windows
+        "! name~=''"
+        # shaped windows
+        "bounding_shaped && !rounded_corners"
+        # no shadow on i3 frames
+        "class_g = 'i3-frame'"
+        # hidden windows
+        "_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'"
+        # stacked / tabbed windows
+        "_NET_WM_STATE@[0]:a = '_NET_WM_STATE@_MAXIMIZED_VERT'"
+        "_NET_WM_STATE@[0]:a = '_NET_WM_STATE@_MAXIMIZED_HORZ'"
+        "_GTK_FRAME_EXTENTS@:c"
+        # notifications
+        "_NET_WM_WINDOW_TYPE@:32a *= '_NET_WM_WINDOW_TYPE_NOTIFICATION'"
+        # Mozilla fixes
+        "(class_g = 'Firefox' || class_g = 'Thunderbird') && (window_type = 'utility' || window_type = 'popup_menu') && argb"
+      ];
+      vSync = true;
+      settings = {
+        # mark-wmwin-focused = true;
+        # mark-ovredir-focused = true;
+        # detect-rounded-corners = true;
+        # detect-client-opacity = true;
+        # detect-transient = true;
+        # glx-no-stencil = true
+        # glx-no-rebind-pixmap = true;
+        # use-damage = true;
+        "shadow-radius" = 4;
+        # xinerama-shadow-crop = true;
+        # xrender-sync-fence = true;
+        # focus-exclude = [
+        #   "name = 'Picture-in-Picture'",
+        #   "_NET_WM_STATE@:32a *= '_NET_WM_STATE_FULLSCREEN'"
+        # ];
+      };
+    };
+    redshift = {
+      enable = true;
+      tray = true;
+      provider = "geoclue2";
+      settings.redshift.adjustment-method = "randr";
+    };
+  };
 
   xsession = {
     enable = true;
@@ -81,7 +175,6 @@ in {
           { workspace = ws3; output = center_screen; }
           { workspace = ws4; output = left_screen; }
           { workspace = ws5; output = center_screen; }
-          { workspace = ws10; output = right_screen; }
         ];
 
         modes = {

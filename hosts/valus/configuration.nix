@@ -63,6 +63,8 @@
     htop
     git
     vim
+    python3
+    unzip
     wget
     curl
     xfce.xfconf

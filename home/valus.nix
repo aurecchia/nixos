@@ -39,7 +39,10 @@
     inter
     dconf
     xclip
-    dotnet-sdk_8
+    (with pkgs.dotnetCorePackages; combinePackages [
+      sdk_7_0
+      sdk_8_0
+    ])
     inkscape
     slack
     spotify

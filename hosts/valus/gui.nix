@@ -31,12 +31,16 @@
       {
         output = "DisplayPort-2";
         primary = true;
+        monitorConfig = ''
+          Option "TearFree" "on"
+        '';
       }
       {
         output = "HDMI-A-0";
         monitorConfig = ''
           Option "Rotate" "right"
           Option "LeftOf" "DisplaPort-2"
+          Option "TearFree" "on"
         '';
       }
     ];
