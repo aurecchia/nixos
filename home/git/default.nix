@@ -44,6 +44,9 @@
           --format=format:'%C(bold blue)%h%C(reset)%C(auto)%d%C(reset)
           %C(auto)%s%C(reset) %C(dim green)(%ae)%C(reset)'";
       };
+      commit = {
+        verbose = true;
+      };
       push = {
         default = "matching";
       };

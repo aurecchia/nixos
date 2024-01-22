@@ -47,6 +47,8 @@
     slack
     spotify
     zathura
+    telegram-desktop
+    discord
   ];
 
 #   programs.redshift = {
