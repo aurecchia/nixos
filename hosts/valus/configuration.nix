@@ -48,12 +48,18 @@
   users.users.auri = {
     isNormalUser = true;
     description = "Alessio Aurecchia";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
     shell = pkgs.zsh;
   };
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
 
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];	
@@ -67,6 +73,7 @@
     unzip
     wget
     curl
+    docker-compose
     xfce.xfconf
     arandr
     polkit_gnome
