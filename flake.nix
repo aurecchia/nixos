@@ -25,6 +25,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # m8c = {
+    #   url = "https://github.com/laamaa/m8c/archive/refs/heads/main.tar.gz"
+    # }
+
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
 

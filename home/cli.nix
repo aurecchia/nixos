@@ -8,6 +8,7 @@
     postgresql
     ripgrep
     zip
+    hyperfine
   ];
 
   programs = {

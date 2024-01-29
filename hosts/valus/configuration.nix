@@ -62,13 +62,14 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];	
-	
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   environment.systemPackages = with pkgs; [
     killall
     htop
     git
     vim
+    file
     python3
     unzip
     wget
@@ -81,6 +82,12 @@
   ];
 
   programs.thunar.enable = true;
+
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryFlavor = "gtk2";
+    enableSSHSupport = true;
+  };
 
   programs.steam = {
     enable = true;

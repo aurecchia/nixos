@@ -49,7 +49,18 @@
     zathura
     telegram-desktop
     discord
+    wine
+    docker-credential-helpers
+    # m8c-stable
   ];
+
+  programs.password-store = {
+    enable = true;
+  };
+
+  # programs.gpg = {
+  #   enable = true;
+  # };
 
 #   programs.redshift = {
 #     enable = true;

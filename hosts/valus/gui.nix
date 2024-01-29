@@ -17,7 +17,7 @@
     videoDrivers = [ "amdgpu" ];
 
     layout = "us";
-    xkbVariant = "";
+    xkbVariant = "altgr-intl";
     # TODO: Add xkboptions
 
     resolutions = [
