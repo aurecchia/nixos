@@ -39,11 +39,11 @@ in {
           follow = "keyboard";
           width = "(0, 500)";
           height = 100;
-          offset = "0x24";
-          separator_height = 4;
-          frame_width = 0;
-          separator_color = "#00000000";
-          font = "Iosevka Term 10";
+          offset = "10x10";
+          separator_height = 1;
+          frame_width = 2;
+          separator_color = "#dededeff";
+          font = "JetBrains Mono 10";
           format = ''
             <b>%s</b>
             %b'';
@@ -51,7 +51,7 @@ in {
           show_age_threshold = "5m";
           icon_position = "left";
           max_icon_size = 60;
-          icon_path = "${pkgs.zafiro-icons}/share/icons/Zafiro-icons";
+          # icon_path = "${pkgs.zafiro-icons}/share/icons/Zafiro-icons";
           enable_recursive_icon_lookup = "true";
           dmenu = "${pkgs.rofi}/bin/rofi -dmenu -p dunst";
           mouse_left_click = "close_current";
@@ -61,12 +61,20 @@ in {
           timeout = "30s";
           startup_notification = false;
           markup = "full";
-          foreground = "#eceff4";
+          foreground = "#DEDEDEFF";
         };
-        urgency_low = { background = "#4c566acc"; };
-        urgency_normal = { background = "#5e81accc"; };
+        urgency_low = {
+          background = "##444E5BFF";
+          frame_color = "#DEDEDEFF";
+        };
+        urgency_normal = {
+          background = "#3C4D63FF";
+          frame_color = "#DEDEDEFF";
+        };
         urgency_critical = {
-          background = "#bf616acc";
+          background = "#A01919FF";
+          foreground = "#FFFFFFFF";
+          frame_color = "#FFFFFFFF";
           fullscreen = "show";
           timeout = 0;
         };
@@ -148,6 +156,7 @@ in {
         bars = [];
 
         window = {
+          titlebar = false;
           hideEdgeBorders = "both";
           commands = [
             { criteria = { window_role = "pop-up"; }; command = "floating enable"; }
@@ -198,7 +207,7 @@ in {
             Escape = "mode default";
           };
         };
-        
+
         keybindings = {
           "${mod}+q" = "kill";
           "${mod}+Shift+r" = "restart";
@@ -219,24 +228,24 @@ in {
           "${mod}+j" = "focus down";
           "${mod}+k" = "focus up";
           "${mod}+l" = "focus right";
-         
+
           # move focused window
           "${mod}+Shift+h" = "move left";
           "${mod}+Shift+j" = "move down";
           "${mod}+Shift+k" = "move up";
           "${mod}+Shift+l" = "move right";
-         
+
           # Splits
           "${mod}+s" = "split toggle";
-         
+
           "${mod}+F11" = "fullscreen toggle";
-         
+
           # Layout
           "${mod}+Shift+w" = "layout tabbed";
           "${mod}+Shift+s" = "layout stacking";
           "${mod}+Shift+e" = "layout toggle split";
           "${mod}+Shift+space" = "floating toggle";
-        
+
           # switch to workspace
           "${mod}+1" = "workspace ${ws1}";
           "${mod}+2" = "workspace ${ws2}";

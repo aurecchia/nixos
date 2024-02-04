@@ -7,7 +7,10 @@
   pkgs,
   nix-colors,
   ...
-}: {
+}: 
+let 
+  haiku-hand = (pkgs.callPackage ./haiku-hand/haiku-hand.nix {});
+in {
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -16,22 +19,23 @@
 
     # You can also split up your configuration and import pieces of it here:
     ./i3
-    ./cli.nix
+    ./cli
     ./rofi
     ./kitty
     ./git
     ./firefox.nix
     ./nvim
-    ./zsh.nix
     ./jetbrains.nix
     ./gcloud.nix
+    ./citrix
+    # ./httpie/httpie-oauth2-client-credentials.nix
   ];
 
   fonts.fontconfig.enable = true;
 
-  home.file = {
-    ".Xresources".source = ./Xresources;
-  };
+  # home.file = {
+  #   ".Xresources".source = ./Xresources;
+  # };
 
   home.packages = with pkgs; [
     dejavu_fonts
@@ -43,6 +47,7 @@
       sdk_7_0
       sdk_8_0
     ])
+    gimp-with-plugins
     inkscape
     slack
     spotify
@@ -52,10 +57,41 @@
     wine
     docker-credential-helpers
     # m8c-stable
+    libnotify
+    gpick
+    nodejs
+    xorg.xcursorgen
+    scrot
+    httpie
+    deno
+    mate.engrampa
+    haiku-hand
+    lxappearance
   ];
 
   programs.password-store = {
     enable = true;
+  };
+
+  programs.thunderbird = {
+    enable = true;
+    profiles.auri = {
+      isDefault = true;
+    };
+  };
+
+  accounts.email.accounts = {
+    auri = {
+      primary = true;
+      address = "alessio@aurecchia.ch";
+      thunderbird.enable = true;
+      realName = "Alessio Aurecchia";
+    };
+    valora = {
+      address = "alessio.aurecchia@valora.com";
+      thunderbird.enable = true;
+      realName = "Alessio Aurecchia";
+    };
   };
 
   # programs.gpg = {
@@ -109,6 +145,13 @@
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+    TERMINAL = "kitty";
+    TERM = "kitty";
+  };
+
   dconf.settings = {
     "org/gnome/desktop/background" = {
       picture-uri-dark = "file://${pkgs.nixos-artwork.wallpapers.nineish-dark-gray.src}";
@@ -118,12 +161,12 @@
     };
   };
 
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Adwaita-dark";
-      package = pkgs.gnome.gnome-themes-extra;
-    };
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    name = "HaikuHand";
+    size = 32;
+    package = haiku-hand;
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

@@ -32,7 +32,7 @@ bar {
     output DisplayPort-2
     tray_padding 0
     tray_output primary
-    position top
+    position bottom
     separator_symbol $bar_separator_symbol
     status_command i3status
 
@@ -56,7 +56,7 @@ bar {
     modifier $bar_modifier
     mode $bar_mode
     output HDMI-A-0
-    position top
+    position bottom
     separator_symbol $bar_separator_symbol
     tray_output none
 

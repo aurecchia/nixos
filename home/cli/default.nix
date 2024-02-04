@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./zsh.nix
+  ];
+
   home.packages = with pkgs; [
     delta
     fd
@@ -9,6 +13,7 @@
     ripgrep
     zip
     hyperfine
+    gh
   ];
 
   programs = {
