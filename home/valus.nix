@@ -9,26 +9,11 @@
   ...
 }: 
 let 
-  haiku-hand = (pkgs.callPackage ./haiku-hand/haiku-hand.nix {});
+  haiku-hand = (pkgs.callPackage ./common/haiku-hand/haiku-hand.nix {});
 in {
   # You can import other home-manager modules here
   imports = [
-    # If you want to use home-manager modules from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModule
-    nix-colors.homeManagerModules.default
-
-    # You can also split up your configuration and import pieces of it here:
-    ./i3
-    ./cli
-    ./rofi
-    ./kitty
-    ./git
-    ./firefox.nix
-    ./nvim
-    ./jetbrains.nix
-    ./gcloud.nix
-    ./citrix
-    # ./httpie/httpie-oauth2-client-credentials.nix
+    ./common
   ];
 
   fonts.fontconfig.enable = true;
