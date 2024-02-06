@@ -1,13 +1,13 @@
 { lib, buildPythonPackage, fetchPypi, httpie, ... }:
 
 buildPythonPackage rec {
-  pname = "httpie-httpie-oauth2-client-credentials";
+  pname = "httpie-oauth2-client-credentials";
   version = "0.2.0";
   format = "setuptools";
 
   src = fetchPypi {
     inherit pname version;
-    sha256 = "6711a04fff0a38ef7fed90bb37d6c09096b09efcb4b95e12f1c05aa883bba146";
+    sha256 = "e35fc2b1c379f71c5e62112f9e0e77862c13ff74b1b5bd2350cd0bcb53c9eaa7";
   };
 
   # propagatedBuildInputs = [ httpie requests_ntlm ];

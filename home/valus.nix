@@ -10,6 +10,9 @@
 }: 
 let 
   haiku-hand = (pkgs.callPackage ./common/haiku-hand/haiku-hand.nix {});
+  httpie-oauth2-client-credentials = (pkgs.callPackage ./common/httpie/httpie-oauth2-client-credentials.nix {
+    buildPythonPackage = pkgs.python3Packages.buildPythonPackage;
+  });
 in {
   # You can import other home-manager modules here
   imports = [
@@ -26,12 +29,16 @@ in {
     dejavu_fonts
     jetbrains-mono
     inter
+    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     dconf
     xclip
     (with pkgs.dotnetCorePackages; combinePackages [
       sdk_7_0
       sdk_8_0
     ])
+
+    nodePackages.vim-language-server
+
     gimp-with-plugins
     inkscape
     slack
@@ -48,6 +55,7 @@ in {
     xorg.xcursorgen
     scrot
     httpie
+    httpie-oauth2-client-credentials
     deno
     mate.engrampa
     haiku-hand

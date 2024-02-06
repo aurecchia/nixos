@@ -18,6 +18,8 @@ set sidescrolloff=10
 set splitright
 set splitbelow
 
+set pumheight=20
+
 " }}}
 
 " REMAPS {{{
