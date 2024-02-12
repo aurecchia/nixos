@@ -18,7 +18,6 @@
 
     layout = "us";
     xkbVariant = "altgr-intl";
-    # TODO: Add xkboptions
 
     resolutions = [
       { x = 3840; y = 2160; }
@@ -61,6 +60,12 @@
         CENTER='DisplayPort-2'
         ${pkgs.xorg.xrandr}/bin/xrandr --output $CENTER --primary --output $LEFT --left-of $CENTER --rotate right
       '';
+    };
+
+    desktopManager = {
+      gnome.enable = false;
+      plasma5.enable = false;
+      xterm.enable = false;
     };
   };
 }

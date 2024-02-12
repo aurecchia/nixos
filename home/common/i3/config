@@ -1,3 +1,5 @@
+smart_gaps on
+
 default_orientation auto
 
 set $bar_separator_symbol " / "

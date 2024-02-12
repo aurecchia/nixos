@@ -10,9 +10,15 @@
 }: 
 let 
   haiku-hand = (pkgs.callPackage ./common/haiku-hand/haiku-hand.nix {});
-  httpie-oauth2-client-credentials = (pkgs.callPackage ./common/httpie/httpie-oauth2-client-credentials.nix {
-    buildPythonPackage = pkgs.python3Packages.buildPythonPackage;
-  });
+  # httpie-oauth2-client-credentials = (pkgs.callPackage ./common/httpie/httpie-oauth2-client-credentials.nix {
+  #   buildPythonPackage = pkgs.python3Packages.buildPythonPackage;
+  # });
+  # httpie = (pkgs.callPackage ./common/httpie/default.nix { 
+  #   buildPythonApplication = pkgs.python3Packages.buildPythonApplication;
+  #   httpie-oauth2-client-credentials = httpie-oauth2-client-credentials;
+  #   pythonPackages = pkgs.hpython3Packages;
+  #   pandoc = pkgs.pandoc;
+  # });
 in {
   # You can import other home-manager modules here
   imports = [
@@ -30,8 +36,11 @@ in {
     jetbrains-mono
     inter
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+
     dconf
     xclip
+    hsetroot
+
     (with pkgs.dotnetCorePackages; combinePackages [
       sdk_7_0
       sdk_8_0
@@ -54,8 +63,8 @@ in {
     nodejs
     xorg.xcursorgen
     scrot
-    httpie
-    httpie-oauth2-client-credentials
+    # httpie
+    # httpie-oauth2-client-credentials
     deno
     mate.engrampa
     haiku-hand
@@ -147,7 +156,7 @@ in {
 
   dconf.settings = {
     "org/gnome/desktop/background" = {
-      picture-uri-dark = "file://${pkgs.nixos-artwork.wallpapers.nineish-dark-gray.src}";
+      picture-uri-dark = ""; #"file://${pkgs.nixos-artwork.wallpapers.nineish-dark-gray.src}";
     };
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
