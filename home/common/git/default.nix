@@ -26,7 +26,6 @@
         cb = "checkout -b";
         ci = "commit";
         co = "checkout";
-        d = "diff";
         fix = "commit --fixup HEAD";
         lg = "!git --no-pager log --graph --oneline --date=human -n 20";
         lga = "!git lg --exclude '*/renovate/*' --all";
@@ -38,6 +37,7 @@
         s = "status --short --branch --ahead-behind";
         sw = "sw";
         wip = "commit -am \"wip\"";
+        gone = "!f() { git fetch --all --prune; git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D; }; f";
 
         lgnice = "
           log --graph --abbrev-commit --decorate -n 30 \

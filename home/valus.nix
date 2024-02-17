@@ -47,10 +47,16 @@ in {
     ])
 
     nodePackages.vim-language-server
+    difftastic
 
     gimp-with-plugins
     inkscape
+    simplescreenrecorder
+    mate.mate-utils
+
     slack
+    vlc
+    mpv
     spotify
     zathura
     telegram-desktop
@@ -62,7 +68,6 @@ in {
     gpick
     nodejs
     xorg.xcursorgen
-    scrot
     # httpie
     # httpie-oauth2-client-credentials
     deno
@@ -169,6 +174,11 @@ in {
     name = "HaikuHand";
     size = 32;
     package = haiku-hand;
+  };
+
+  services.syncthing = {
+    enable = true;
+    tray.enable = true;
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
