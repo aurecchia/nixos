@@ -5,16 +5,16 @@ let
   dmenuOpts = "-fn \"JetBrains Mono NL-11:Bold\" -nb \"#000000\"";
 
   # Workspaces
-  ws1 = "1: dev";
-  ws2 = "2: term";
-  ws3 = "3: www";
-  ws4 = "4: slack";
+  ws1 = "1";
+  ws2 = "2";
+  ws3 = "3";
+  ws4 = "4";
   ws5 = "5";
   ws6 = "6";
   ws7 = "7";
   ws8 = "8";
   ws9 = "9";
-  ws10 = "10: spotify";
+  ws10 = "10";
 
   # Outputs
   center_screen = "DisplayPort-2";
@@ -29,6 +29,7 @@ let
 in {
   home.packages = with pkgs; [
     i3status
+    i3wsr
   ];
 
   xsession.windowManager.i3 = {
@@ -55,9 +56,49 @@ in {
         inner = 6;
       };
 
+      colors = {
+        background = "#cacaca";
+        focused = {
+          # border = "#4c7899";
+          border = "#5F6777";
+          background = "#5F6777";
+          text = "#000000";
+          indicator = "#2e9ef4";
+          childBorder = "#5F6777";
+        };
+        focusedInactive = {
+          border = "#555D6D";
+          background = "#5f676a";
+          text = "#333333";
+          indicator = "#484e50";
+          childBorder = "#555D6D";
+        };
+        unfocused = {
+          border = "#333333";
+          background = "#222222";
+          text = "#888888";
+          indicator = "#292d2e";
+          childBorder = "#222222";
+        };
+        urgent = {
+          border = "#2f343a";
+          background = "#900000";
+          text = "#ffffff";
+          indicator = "#900000";
+          childBorder = "#900000";
+        };
+        placeholder = {
+          border = "#000000";
+          background = "#0c0c0c";
+          text = "#ffffff";
+          indicator = "#000000";
+          childBorder = "#0c0c0c";
+        };
+      };
+
       window = {
         titlebar = false;
-        border = 2;
+        border = 3;
         hideEdgeBorders = "smart";
         commands = [
           { criteria = { window_role = "pop-up"; }; command = "floating enable"; }
@@ -178,7 +219,27 @@ in {
         # modes
         "${mod}+r" = "mode \"${mode_resize}\"";
         "${mod}+Shift+q" = "mode \"${mode_system}\"";
+
+        # other
+        "XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume 9 +5%";
+        "XF86AudioLowerVolume" = "exec --no-startup-id pactl set-sink-volume 9 -5%";
+        "XF86AudioMute" = "exec --no-startup-id pactl set-sink-mute 0 toggle";
+
+        "XF86MonBrightnessUp" = "exec \"xbacklight -inc 10\"";
+        "XF86MonBrightnessDown" = "exec \"xbacklight -dec 10\"";
+
+        "XF86AudioPlay" = "exec playerctl play";
+        "XF86AudioPause" = "exec playerctl pause";
+        "XF86AudioNext" = "exec playerctl next";
+        "XF86AudioPrev" = "exec playerctl previous";
+
+        "--release Print" = "exec mate-screenshot --interactive";
+        "--release Shift+Print" = "exec mate-screenshot --area";
       };
+
+      startup = [
+        { command = "i3wsr"; always = true; notification = false; }
+      ];
     };
 
     extraConfig = builtins.readFile ./config;
