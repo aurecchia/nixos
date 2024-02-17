@@ -10,9 +10,9 @@
 }: 
 let 
   haiku-hand = (pkgs.callPackage ./common/haiku-hand/haiku-hand.nix {});
-  # httpie-oauth2-client-credentials = (pkgs.callPackage ./common/httpie/httpie-oauth2-client-credentials.nix {
-  #   buildPythonPackage = pkgs.python3Packages.buildPythonPackage;
-  # });
+  httpie-oauth2-client-credentials = (pkgs.callPackage ./common/httpie/httpie-oauth2-client-credentials.nix {
+    buildPythonPackage = pkgs.python3Packages.buildPythonPackage;
+  });
   # httpie = (pkgs.callPackage ./common/httpie/default.nix { 
   #   buildPythonApplication = pkgs.python3Packages.buildPythonApplication;
   #   httpie-oauth2-client-credentials = httpie-oauth2-client-credentials;
@@ -45,6 +45,10 @@ in {
       sdk_7_0
       sdk_8_0
     ])
+    (python3.withPackages (ps: with ps; [
+      httpie
+      httpie-oauth2-client-credentials
+    ]))
 
     nodePackages.vim-language-server
     difftastic
