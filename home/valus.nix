@@ -57,6 +57,8 @@ in {
     inkscape
     simplescreenrecorder
     mate.mate-utils
+    libreoffice-fresh
+    pdfpc
 
     slack
     vlc

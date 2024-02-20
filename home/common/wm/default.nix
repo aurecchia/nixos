@@ -21,7 +21,7 @@
 
     initExtra = ''
       xset r rate 160 60
-      hsetroot -solid "#5D788C"
+      hsetroot -solid "#5F6777"
     '';
   };
 }
