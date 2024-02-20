@@ -163,6 +163,7 @@ in {
     VISUAL = "nvim";
     TERMINAL = "kitty";
     TERM = "kitty";
+    BROWSER = "firefox";
   };
 
   dconf.settings = {

@@ -57,42 +57,41 @@ in {
       # };
 
       colors = {
-        background = "#cacaca";
+        background = "#151515";
         focused = {
-          # border = "#4c7899";
-          border = "#005F87";
-          background = "#005F87";
-          text = "#ffffff";
-          indicator = "#2e9ef4";
-          childBorder = "#005F87";
+          border = "$focused_border";
+          background = "$focused_bg";
+          text = "$focused_fg";
+          indicator = "$focused_indicator";
+          childBorder = "$focused_border";
         };
         focusedInactive = {
-          border = "#000000";
-          background = "#2a2a2a";
-          text = "#585858";
-          indicator = "#484e50";
-          childBorder = "#000000";
+          background = "$inactive_bg";
+          text = "$inactive_fg";
+          border = "$inactive_border";
+          childBorder = "$inactive_border";
+          indicator = "$inactive_border";
         };
         unfocused = {
-          border = "#000000";
-          background = "#2a2a2a";
-          text = "#585858";
-          indicator = "#292d2e";
-          childBorder = "#000000";
+          background = "$unfocused_bg";
+          text = "$unfocused_fg";
+          border = "$unfocused_border";
+          childBorder = "$unfocused_border";
+          indicator = "$unfocused_border";
         };
         urgent = {
-          border = "#2f343a";
-          background = "#900000";
-          text = "#ffffff";
-          indicator = "#900000";
-          childBorder = "#900000";
+          background = "$urgent_bg";
+          text = "$urgent_fg";
+          border = "$urgent_border";
+          childBorder = "$urgent_border";
+          indicator = "$urgent_border";
         };
         placeholder = {
-          border = "#000000";
-          background = "#0c0c0c";
-          text = "#ffffff";
-          indicator = "#000000";
-          childBorder = "#0c0c0c";
+          background = "$placeholder_bg";
+          text = "$placeholder_fg";
+          border = "$placeholder_border";
+          childBorder = "$placeholder_border";
+          indicator = "$placeholder_border";
         };
       };
 
@@ -162,8 +161,8 @@ in {
         "${mod}+e" = "exec emoji-picker";
         "${mod}+f" = "exec thunar";
         #"${mod}+g" = "exec ~/.scripts/i3-wm-scripts/nextfind.py ${dmenuOpts} -l 10";
-        "${mod}+t" = "exec kitty";
-        "${mod}+w" = "exec firefox-dev";
+        "${mod}+t" = "exec \$TERMINAL";
+        "${mod}+w" = "exec \$BROWSER";
 
         # change focus
         "${mod}+h" = "focus left";
@@ -242,7 +241,32 @@ in {
       ];
     };
 
-    extraConfig = builtins.readFile ./config;
+    extraConfig = ''
+      set_from_resource $bar_background      i3.background         #101010
+      set_from_resource $bar_statusline      i3.foreground         #ffffff
+      set_from_resource $bar_separator       i3.barDimmed          #666666
+
+      set_from_resource $focused_bg          i3.focusedBg          #005F87
+      set_from_resource $focused_fg          i3.focusedFg          #ffffff
+      set_from_resource $focused_border      i3.focusedBorder      #005F87
+      set_from_resource $focused_indicator   i3.focusedBorder      #007FB4
+
+      set_from_resource $inactive_bg         i3.inactiveBg         #2a2a2a
+      set_from_resource $inactive_fg         i3.inactiveFg         #585858
+      set_from_resource $inactive_border     i3.inactiveBorder     #2a2a2a
+
+      set_from_resource $unfocused_bg        i3.unfocusedBg        #2a2a2a
+      set_from_resource $unfocused_fg        i3.unfocusedFg        #585858
+      set_from_resource $unfocused_border    i3.unfocusedBorder    #000000
+
+      set_from_resource $urgent_bg           i3.urgentBg           #900000
+      set_from_resource $urgent_fg           i3.urgentFg           #ffffff
+      set_from_resource $urgent_border       i3.urgentBorder       #2f343a
+
+      set_from_resource $placeholder_bg      i3.placeholderBg      #0c0c0c
+      set_from_resource $placeholder_fg      i3.placeholderFg      #ffffff
+      set_from_resource $placeholder_border  i3.placeholderBorder  #0c0c0c
+    '';
   };
 }
 
