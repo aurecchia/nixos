@@ -249,7 +249,7 @@ in {
       set_from_resource $focused_bg          i3.focusedBg          #005F87
       set_from_resource $focused_fg          i3.focusedFg          #ffffff
       set_from_resource $focused_border      i3.focusedBorder      #005F87
-      set_from_resource $focused_indicator   i3.focusedBorder      #007FB4
+      set_from_resource $focused_indicator   i3.indicator          #007FB4
 
       set_from_resource $inactive_bg         i3.inactiveBg         #2a2a2a
       set_from_resource $inactive_fg         i3.inactiveFg         #585858

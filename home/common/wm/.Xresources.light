@@ -1,0 +1,25 @@
+i3.background: #101010
+i3.foreground: #ffffff
+i3.barDimmed: #666666
+
+i3.focusedBg: #005F87
+i3.focusedFg: #ffffff
+i3.focusedBorder: #005F87
+i3.indicator: #007FB4
+
+i3.inactiveBg: #eeeeee
+i3.inactiveFg: #111111
+i3.inactiveBorder: #eeeeee
+
+i3.unfocusedBg: #eeeeee
+i3.unfocusedFg: #333333
+i3.unfocusedBorder: #eeeeee
+
+i3.urgentBg: #900000
+i3.urgentFg: #ffffff
+i3.urgentBorder: #2f343a
+
+i3.placeholderBg: #0c0c0c
+i3.placeholderFg: #ffffff
+i3.placeholderBorder: #0c0c0c
+

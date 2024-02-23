@@ -30,6 +30,13 @@ in {
   # home.file = {
   #   ".Xresources".source = ./Xresources;
   # };
+  home.file."scripts/switch_colors".source = ./scripts/switch_colors;
+
+  home.file.".Xresources.light".source = ./common/wm/.Xresources.light;
+  home.file.".Xresources.dark".source = ./common/wm/.Xresources.dark;
+  xresources.extraConfig = ''
+    #include ".Xresources.colors"
+  '';
 
   home.packages = with pkgs; [
     dejavu_fonts
@@ -52,6 +59,9 @@ in {
 
     nodePackages.vim-language-server
     difftastic
+
+    bitwarden
+    bitwarden-cli
 
     gimp-with-plugins
     inkscape
