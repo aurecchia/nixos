@@ -2,7 +2,6 @@
 
 configuration {
 	modi: "window,run,ssh";
-	font: "JetBrains Mono Bold 14";
 /*	location: 0;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/

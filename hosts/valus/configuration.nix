@@ -81,6 +81,8 @@
     lutris
   ];
 
+  environment.localBinInPath = true;
+
   programs.thunar.enable = true;
 
   programs.gnupg.agent = {

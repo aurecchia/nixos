@@ -7,13 +7,13 @@ i3.focusedFg: #ffffff
 i3.focusedBorder: #005F87
 i3.indicator: #007FB4
 
-i3.inactiveBg: #eeeeee
+i3.inactiveBg: #c9c9c9
 i3.inactiveFg: #111111
-i3.inactiveBorder: #eeeeee
+i3.inactiveBorder: #c9c9c9
 
-i3.unfocusedBg: #eeeeee
-i3.unfocusedFg: #333333
-i3.unfocusedBorder: #eeeeee
+i3.unfocusedBg: #c9c9c9
+i3.unfocusedFg: #222222
+i3.unfocusedBorder: #c9c9c9
 
 i3.urgentBg: #900000
 i3.urgentFg: #ffffff

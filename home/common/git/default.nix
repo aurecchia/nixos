@@ -57,11 +57,11 @@
         defaultBranch = "main";
       };
       merge = {
-        tool = "vimdiff3";
+        tool = "nvimdiff";
         conflictstyle = "zdiff3";
       };
-      "mergetool \"vimdiff3\"" = {
-          path = "nvim";
+      mergetool = {
+        layout = "(LOCAL,MERGED,REMOTE)";
       };
       pager.branch = false;
       mergetool.keepBackup = false;

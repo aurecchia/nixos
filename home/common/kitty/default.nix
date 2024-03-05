@@ -1,7 +1,4 @@
 { config, pkgs, ... }:
-let
-  inherit (config.colorscheme) colors;
-in
 {
   programs.kitty = {
     enable = true;
@@ -12,5 +9,9 @@ in
     };
 
     extraConfig = builtins.readFile ./kitty.conf;
+  };
+  home.file.".config/kitty/themes" = {
+    recursive = true;
+    source = ./themes;
   };
 }

@@ -47,6 +47,8 @@ in {
     dconf
     xclip
     hsetroot
+    feh
+    typst
 
     (with pkgs.dotnetCorePackages; combinePackages [
       sdk_7_0
@@ -69,7 +71,10 @@ in {
     mate.mate-utils
     libreoffice-fresh
     pdfpc
+    ledger
+    ledger-web
 
+    chromium
     slack
     vlc
     mpv
@@ -174,6 +179,7 @@ in {
     TERMINAL = "kitty";
     TERM = "kitty";
     BROWSER = "firefox";
+    GTK_SCALE = "2";
   };
 
   dconf.settings = {

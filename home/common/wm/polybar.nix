@@ -2,6 +2,11 @@
  let
   fg = "#fefefe";
   bg = "#202020";
+  font =  "Inter SemiBold:size=15;6";
+  font-bold =  "Inter SemiBold:size=15;6";
+  height = 42;
+  border-bottom-size = 2;
+  padding = 3;
 in
 {
   services.polybar = {
@@ -12,8 +17,8 @@ in
     };
 
     script = ''
-      polybar -q -r center &
-      polybar -q -r left &
+      polybar -q --reload center &
+      polybar -q --reload left &
     '';
 
     config = {
@@ -33,11 +38,12 @@ in
 
       "bar/center" = {
         monitor = "DisplayPort-2";
-        height = 32;
+        height = height;
 
-        font-0 = "JetBrains Mono Semibold:size=15;5";
+        font-0 = font;
+        font-1 = font-bold;
 
-        border-bottom-size = 2;
+        border-bottom-size = border-bottom-size;
         border-bottom-color = "#000000";
 
         modules-left = "i3";
@@ -46,11 +52,12 @@ in
 
       "bar/left" = {
         monitor = "HDMI-A-0";
-        height = 32;
+        height = height;
 
-        font-0 = "JetBrains Mono Semibold:size=15;5";
+        font-0 = font;
+        font-1 = font-bold;
 
-        border-bottom-size = 2;
+        border-bottom-size = border-bottom-size;
         border-bottom-color = "#000000";
 
         modules-left = "i3";
@@ -67,36 +74,43 @@ in
         # label-mode = "%mode%";
         label-mode-foreground = "#005f00";
         label-mode-background = "#afdf00";
-        label-mode-padding = 1;
+        label-mode-padding = padding;
 
-        label-focused = "%name%";
+        label-focused = "%{T2}%name%%{T-}";
+        # label-focused-foreground = "#ffffff";
+        # label-focused-background = "#005F87";
         label-focused-foreground = "#ffffff";
-        label-focused-background = "#005F87";
-        label-focused-padding = 1;
+        label-focused-background = "#000000";
+        label-focused-padding = padding;
 
         label-unfocused = "%name%";
-        label-unfocused-foreground = "#585858";
-        label-unfocused-background = "#2a2a2a";
-        label-unfocused-padding = 1;
+        # label-unfocused-foreground = "#585858";
+        # label-unfocused-background = "#2a2a2a";
+        label-unfocused-foreground = "#666666";
+        label-unfocused-background = "#000000";
+        label-unfocused-padding = padding;
 
         label-visible = "%name%";
-        label-visible-foreground = "#585858";
-        label-visible-background = "#2a2a2a";
-        label-visible-padding = 1;
+        # label-visible-foreground = "#585858";
+        # label-visible-background = "#2a2a2a";
+        label-visible-foreground = "#666666";
+        label-visible-background = "#000000";
+        label-visible-padding = padding;
 
         label-urgent = "%name%";
         label-urgent-foreground = "#ffffff";
-        label-urgent-background = "#87005F";
-        label-urgent-padding = 1;
+        label-urgent-background = "#a7004F";
+        label-urgent-padding = padding;
 
-        label-separator = " ";
+        label-separator = "";
+        label-separator-padding = 0;
         label-separator-background = "#000000";
       };
 
       "module/title" = {
         type = "internal/xwindow";
         format = "<label>";
-        format-padding = 1;
+        format-padding = padding;
         format-foreground = "#ffffff";
         label = "%title%";
         label-maxlen = 70;
@@ -125,7 +139,7 @@ in
         interval = "5";
 
         format = "<label> ";
-        format-padding = 1;
+        format-padding = padding;
         label = "CPU %percentage%%";
       };
 
@@ -135,7 +149,7 @@ in
         interval = 5;
 
         format = "<label>";
-        format-padding = 1;
+        format-padding = padding;
 
         label = "RAM %used% (%percentage_used%%)";
       };
@@ -145,18 +159,20 @@ in
 
         interval = "1.0";
 
-        time = "%Y-%m-%d %H:%M:%S";
-        time-alt = "%H:%M:%S";
+        time = "%a %e %H:%M";
+        time-alt = "%Y-%m-%d %H:%M:%S";
 
         format = "<label>";
-        format-pading = 1;
+        format-padding = padding;
 
         label = "%time%";
       };
 
       "module/tray" = {
         type = "internal/tray";
-        format-pading = 1;
+        tray-size = "90%:-4pt";
+        tray-spacing = 0;
+        tray-padding = padding;
       };
     };
   };

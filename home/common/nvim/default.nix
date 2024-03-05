@@ -46,6 +46,7 @@
       vim-surround
       nvim-lspconfig
       goyo-vim
+      ir_black
       jellybeans-nvim
       lightline-vim
       firenvim
