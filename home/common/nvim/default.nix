@@ -52,6 +52,7 @@
       firenvim
       vim-nix
       denops-vim
+      typst-vim
 
       nvim-lspconfig
       vim-vsnip

@@ -57,13 +57,20 @@ in {
     (python3.withPackages (ps: with ps; [
       httpie
       httpie-oauth2-client-credentials
+      oauthlib
     ]))
+    terraform
 
     nodePackages.vim-language-server
     difftastic
 
     bitwarden
     bitwarden-cli
+    
+    qmk
+    via
+    vial
+    usbutils
 
     gimp-with-plugins
     inkscape

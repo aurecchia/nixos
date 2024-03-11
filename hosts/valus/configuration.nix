@@ -141,6 +141,12 @@
     mv -f /lib64/ld-linux-x86-64.so.2.tmp /lib64/ld-linux-x86-64.so.2 # atomically replace
   '';
 
+  hardware.keyboard.qmk.enable = true;
+
+  services.udev.packages = with pkgs; [
+    via
+  ];
+
   home-manager = {
     extraSpecialArgs = {
       inherit inputs outputs pkgs-unstable nix-colors;

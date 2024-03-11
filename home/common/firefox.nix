@@ -12,6 +12,7 @@
         kagi-search
         privacy-badger
         refined-github
+        stylus
         tridactyl
         ublock-origin
       ];
