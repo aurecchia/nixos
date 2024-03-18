@@ -4,7 +4,7 @@
   programs.rofi = {
     enable = true;
 
-    font = "Inter SemiBold 16";
+    font = "JetBrains Mono Medium 16";
 
     extraConfig = {
       modi = "window,run,ssh";

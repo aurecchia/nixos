@@ -21,7 +21,7 @@
 
     initExtra = ''
       xset r rate 160 60
-      hsetroot -solid "#5F6777"
+      hsetroot -solid "$(xrdb -query | grep 'background' | head -n1 | cut -f 2)"
     '';
   };
 }

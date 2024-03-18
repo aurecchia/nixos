@@ -1,3 +1,5 @@
+background: #5F6777
+
 i3.background: #101010
 i3.foreground: #ffffff
 i3.barDimmed: #666666

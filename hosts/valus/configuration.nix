@@ -99,6 +99,8 @@
 
   programs.solaar.enable = true;
 
+  # programs.coolercontrol.enable = true;
+
   security.polkit = {
     enable = true;
     extraConfig = ''

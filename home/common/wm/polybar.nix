@@ -2,11 +2,11 @@
  let
   fg = "#fefefe";
   bg = "#202020";
-  font =  "Inter SemiBold:size=15;6";
-  font-bold =  "Inter SemiBold:size=15;6";
-  height = 42;
+  font =  "JetBrains Mono Medium:size=15;6";
+  font-bold =  "JetBrains Mono Medium:size=15;6";
+  height = 38;
   border-bottom-size = 2;
-  padding = 3;
+  padding = 1;
 in
 {
   services.polybar = {
@@ -99,7 +99,7 @@ in
 
         label-urgent = "%name%";
         label-urgent-foreground = "#ffffff";
-        label-urgent-background = "#a7004F";
+        label-urgent-background = "#e0462d";
         label-urgent-padding = padding;
 
         label-separator = "";

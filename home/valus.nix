@@ -45,6 +45,8 @@ in {
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 
     dconf
+    xfce.xfconf
+    xfce.xfce4-settings
     xclip
     hsetroot
     feh
@@ -78,8 +80,9 @@ in {
     mate.mate-utils
     libreoffice-fresh
     pdfpc
-    ledger
-    ledger-web
+    hledger
+    hledger-ui
+    hledger-web
 
     chromium
     slack
@@ -178,7 +181,26 @@ in {
   programs.git.enable = true;
 
   # Nicely reload system units when changing configs
-  systemd.user.startServices = "sd-switch";
+  systemd.user = {
+    startServices = "sd-switch";
+    services = {
+      xfsettingsd = {
+        Unit = {
+          Description = "xfsettingsd";
+          After = [ "graphical-session-pre.target" ];
+          PartOf = [ "graphical-session.target" ];
+        };
+
+        Install.WantedBy = [ "graphical-session.target" ];
+
+        Service = {
+          Environment = "PATH=${config.home.profileDirectory}/bin";
+          ExecStart = "${pkgs.xfce.xfce4-settings}/bin/xfsettingsd";
+          Restart = "on-abort";
+        };
+      };
+    };
+  };
 
   home.sessionVariables = {
     EDITOR = "nvim";

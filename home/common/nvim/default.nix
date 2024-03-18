@@ -1,10 +1,16 @@
-{ config, pkgs, ... }: {
-  imports = [
-    # ./lsp.nix
-    # ./syntaxes.nix
-    # ./ui.nix
-    # ./copilot.nix
-  ];
+{ config, pkgs, pkgs-unstable, ... }:
+let
+  vim-colors-paramount = pkgs.vimUtils.buildVimPlugin {
+    name = "vim-colors-paramount";
+    src = pkgs.fetchFromGitHub {
+      owner = "owickstrom";
+      repo = "vim-colors-paramount";
+      rev = "a5601d36fb6932e8d1a6f8b37b179a99b1456798";
+      hash = "sha256-j9nMjKYK7bqrGHprYp0ddLEWs1CNMudxXD13sOROVmY=";
+    };
+  };
+in
+{
   home.sessionVariables.EDITOR = "nvim";
 
   programs.neovim = {
@@ -12,6 +18,7 @@
     vimAlias = true;
     vimdiffAlias = true;
 
+    # Plugins at https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/editors/vim/plugins/generated.nix
     plugins = with pkgs.vimPlugins; [
       {
         plugin = fzf-vim;
@@ -53,7 +60,6 @@
       vim-nix
       denops-vim
       typst-vim
-
       nvim-lspconfig
       vim-vsnip
       cmp-nvim-lsp
@@ -69,6 +75,9 @@
         type = "lua";
         config = builtins.readFile ./plugins/nvim-cmp.lua;
       }
+      vim-colors-paramount
+    ] ++ [
+      pkgs-unstable.vimPlugins.doom-one-nvim
     ];
 
     extraConfig = builtins.readFile ./init.vim;

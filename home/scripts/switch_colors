@@ -24,7 +24,7 @@ ln -sf ".Xresources.$background" ~/.Xresources.colors
 # Overwrite color configuration
 xrdb -merge ~/.Xresources.colors
 
-# Vim
+# Vim watches ~/.vimrc.color and reloads itself
 # echo "set background=$background" > ~/.vimrc.color
 
 # Rofi
@@ -32,19 +32,15 @@ xrdb -merge ~/.Xresources.colors
 
 # For triggering dark themes in GTK apps. Requires `gnome-themes-extra` to be
 # installed (for adwaita-dark). This is primarily for Firefox
-# if [ $background = dark ]; then
-#   sed -i s/Adwaita/Adwaita-dark/ ~/.xsettingsd
-# else
-#   sed -i s/Adwaita-dark/Adwaita/ ~/.xsettingsd
-# fi
-
+if [ $background = dark ]; then
+  xfconf-query --create --type string -c xsettings -p /Net/ThemeName -s "Adwaita-dark"
+else
+  xfconf-query --create --type string -c xsettings -p /Net/ThemeName -s "Adwaita"
+fi
 
 # Reload
 # Update WM background
-# xsetroot -solid "$(xrdb -query | grep 'background' | head -n1 | cut -f 2)"
-
-# Update Gtk apps
-# killall -HUP xsettingsd
+hsetroot -solid "$(xrdb -query | grep 'background' | head -n1 | cut -f 2)"
 
 # Update i3
 i3-msg reload
@@ -52,5 +48,4 @@ i3-msg reload
 # Update terminal emulator
 # kitty +kitten themes --reload-in=all "Solarized $(echo $background | sed 's/./\U&/')"
 
-# Vim watches ~/.vimrc.color and reloads itself
 
