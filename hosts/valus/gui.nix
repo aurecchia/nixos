@@ -44,26 +44,28 @@
       }
     ];
 
-    desktopManager = {
-      gnome.enable = false;
-      plasma5.enable = false;
-      xterm.enable = false;
-      xfce = {
-        enable = true;
-        noDesktop = true;
-        enableXfwm = false;
-      };
-    };
-
     displayManager = {
       lightdm.enable = true;
-      defaultSession = "xfce";
+      defaultSession = "xsession";
+      session = [
+        {
+          manage = "desktop";
+          name = "xsession";
+          start = ''exec $HOME/.session'';
+        }
+      ];
 
       setupCommands = ''
         LEFT='HDMI-A-0'
         CENTER='DisplayPort-2'
         ${pkgs.xorg.xrandr}/bin/xrandr --output $CENTER --primary --output $LEFT --left-of $CENTER --rotate right
       '';
+    };
+
+    desktopManager = {
+      gnome.enable = false;
+      plasma5.enable = false;
+      xterm.enable = false;
     };
   };
 }
