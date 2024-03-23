@@ -33,9 +33,9 @@ xrdb -merge ~/.Xresources.colors
 # For triggering dark themes in GTK apps. Requires `gnome-themes-extra` to be
 # installed (for adwaita-dark). This is primarily for Firefox
 if [ $background = dark ]; then
-  xfconf-query --create --type string -c xsettings -p /Net/ThemeName -s "Adwaita-dark"
+  ln -sf ~/.config/xsettingsd.dark ~/.config/xsettingsd;
 else
-  xfconf-query --create --type string -c xsettings -p /Net/ThemeName -s "Adwaita"
+  ln -sf ~/.config/xsettingsd.light ~/.config/xsettingsd;
 fi
 
 # Reload
@@ -44,6 +44,8 @@ hsetroot -solid "$(xrdb -query | grep 'background' | head -n1 | cut -f 2)"
 
 # Update i3
 i3-msg reload
+
+killall -HUP xsettingsd
 
 # Update terminal emulator
 # kitty +kitten themes --reload-in=all "Solarized $(echo $background | sed 's/./\U&/')"

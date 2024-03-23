@@ -45,8 +45,6 @@ in {
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 
     dconf
-    xfce.xfconf
-    xfce.xfce4-settings
     xclip
     hsetroot
     feh
@@ -105,6 +103,7 @@ in {
     mate.engrampa
     haiku-hand
     lxappearance
+    xsettingsd
   ];
 
   programs.password-store = {
@@ -183,23 +182,6 @@ in {
   # Nicely reload system units when changing configs
   systemd.user = {
     startServices = "sd-switch";
-    services = {
-      xfsettingsd = {
-        Unit = {
-          Description = "xfsettingsd";
-          After = [ "graphical-session-pre.target" ];
-          PartOf = [ "graphical-session.target" ];
-        };
-
-        Install.WantedBy = [ "graphical-session.target" ];
-
-        Service = {
-          Environment = "PATH=${config.home.profileDirectory}/bin";
-          ExecStart = "${pkgs.xfce.xfce4-settings}/bin/xfsettingsd";
-          Restart = "on-abort";
-        };
-      };
-    };
   };
 
   home.sessionVariables = {
@@ -227,6 +209,28 @@ in {
     size = 32;
     package = haiku-hand;
   };
+
+  systemd.user.services.xsettingsd = {
+    Unit = {
+      Description = "xsettingsd";
+      After = [ "graphical-session-pre.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+
+    Install.WantedBy = [ "graphical-session.target" ];
+
+    Service = {
+      Environment = "PATH=${config.home.profileDirectory}/bin";
+      ExecStart = "${pkgs.xsettingsd}/bin/xsettingsd -c ${config.xdg.configHome}/xsettingsd";
+      Restart = "on-abort";
+    };
+  };
+  # services.xsettingsd = {
+  #   enable = true;
+  #   settings = {
+  #     "Xft/Dpi" = 140;
+  #   };
+  # };
 
   services.syncthing = {
     enable = true;
