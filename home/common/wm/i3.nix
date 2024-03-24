@@ -59,11 +59,11 @@ in {
       colors = {
         background = "#151515";
         focused = {
-          border = "$focused_border";
           background = "$focused_bg";
           text = "$focused_fg";
-          indicator = "$focused_indicator";
+          border = "$focused_border";
           childBorder = "$focused_border";
+          indicator = "$focused_indicator";
         };
         focusedInactive = {
           background = "$inactive_bg";
@@ -75,7 +75,7 @@ in {
         unfocused = {
           background = "$unfocused_bg";
           text = "$unfocused_fg";
-          border = "$unfocused_border";
+          border = "$unfocused_bg";
           childBorder = "$unfocused_border";
           indicator = "$unfocused_border";
         };
