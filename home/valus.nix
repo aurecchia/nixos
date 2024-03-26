@@ -96,6 +96,7 @@ in {
     libnotify
     gpick
     nodejs
+    nodePackages.pnpm
     xorg.xcursorgen
     # httpie
     # httpie-oauth2-client-credentials
