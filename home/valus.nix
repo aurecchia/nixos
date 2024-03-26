@@ -50,6 +50,7 @@ in {
     feh
     typst
 
+    # Dev
     (with pkgs.dotnetCorePackages; combinePackages [
       sdk_7_0
       sdk_8_0
@@ -60,6 +61,7 @@ in {
       oauthlib
     ]))
     terraform
+    scrcpy
 
     nodePackages.vim-language-server
     difftastic
