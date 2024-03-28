@@ -49,6 +49,7 @@ in {
     hsetroot
     feh
     typst
+    pdftk
 
     # Dev
     (with pkgs.dotnetCorePackages; combinePackages [
