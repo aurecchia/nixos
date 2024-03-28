@@ -50,6 +50,7 @@ in {
     feh
     typst
     pdftk
+    xbanish
 
     # Dev
     (with pkgs.dotnetCorePackages; combinePackages [
