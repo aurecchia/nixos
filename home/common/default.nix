@@ -9,6 +9,7 @@
     ./git
     ./firefox.nix
     ./nvim
+    ./tmux.nix
     ./jetbrains.nix
     ./gcloud.nix
     ./citrix
