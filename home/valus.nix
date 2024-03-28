@@ -63,6 +63,8 @@ in {
     ]))
     terraform
     scrcpy
+    elixir_1_16
+    inotify-tools
 
     nodePackages.vim-language-server
     difftastic
