@@ -76,6 +76,7 @@ in
         config = builtins.readFile ./plugins/nvim-cmp.lua;
       }
       vim-colors-paramount
+      vim-elixir
     ] ++ [
       pkgs-unstable.vimPlugins.doom-one-nvim
     ];
