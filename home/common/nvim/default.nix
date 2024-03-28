@@ -51,6 +51,7 @@ in
       vim-git
       vim-gitgutter
       vim-surround
+      vim-dadbod
       nvim-lspconfig
       goyo-vim
       ir_black
