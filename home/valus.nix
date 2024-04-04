@@ -5,6 +5,7 @@
   lib,
   config,
   pkgs,
+  pkgs-unstable,
   nix-colors,
   ...
 }: 
@@ -66,6 +67,7 @@ in {
     scrcpy
     elixir_1_16
     inotify-tools
+    xsv
 
     nodePackages.vim-language-server
     difftastic
@@ -111,6 +113,8 @@ in {
     haiku-hand
     lxappearance
     xsettingsd
+  ] ++ [
+    pkgs-unstable.csvlens
   ];
 
   programs.password-store = {
