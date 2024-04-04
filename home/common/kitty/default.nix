@@ -10,8 +10,6 @@
 
     extraConfig = builtins.readFile ./kitty.conf;
   };
-  home.file.".config/kitty/themes" = {
-    recursive = true;
-    source = ./themes;
-  };
+
+  home.file.".config/kitty/auri_theme.conf".source = ./auri_theme.conf;
 }
