@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 {
+  home.sessionVariables.TERMINAL = "kitty";
+  home.sessionVariables.TERM = "kitty";
+
   programs.kitty = {
     enable = true;
 
