@@ -52,6 +52,7 @@ in {
     typst
     pdftk
     xbanish
+    xiccd
 
     # Dev
     (with pkgs.dotnetCorePackages; combinePackages [
@@ -246,6 +247,22 @@ in {
   services.syncthing = {
     enable = true;
     tray.enable = true;
+  };
+
+  systemd.user.services.xiccd = {
+    Unit = {
+      Description = "Xiccd Screen Color Profiler";
+    };
+    Install = {
+      WantedBy = [ "dbus.service" ];
+      After = [ "dbus.service" ];
+      PartOf = [ "dbus.service" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.xiccd}/bin/xiccd";
+      ExecStop = "pkill xiccd";
+      Restart = "always";
+    };
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

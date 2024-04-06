@@ -68,4 +68,6 @@
       xterm.enable = false;
     };
   };
+
+  services.colord.enable = true;
 }
