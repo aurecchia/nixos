@@ -19,25 +19,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-colors.url = "github:misterio77/nix-colors";
-    solaar = {
-      url = "github:Svenum/Solaar-Flake/latest"; # For latest stable version
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # m8c = {
     #   url = "https://github.com/laamaa/m8c/archive/refs/heads/main.tar.gz"
     # }
 
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
-
-    # Shameless plug: looking for a way to nixify your themes and make
-    # everything match nicely? Try nix-colors!
-    # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-colors, solaar, ...  } @ inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ...  } @ inputs:
     let
       inherit (self) outputs;
       pkgs-unstable = import nixpkgs-unstable {
@@ -46,12 +36,12 @@
           allowUnfree = true;
         };
       };
+      colors = import ./home/common/colors.nix {};
     in {
       nixosConfigurations = {
         valus = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs pkgs-unstable nix-colors; };
+          specialArgs = { inherit inputs outputs pkgs-unstable colors; };
           modules = [
-            solaar.nixosModules.default
             ./hosts/valus/configuration.nix
           ];
         };

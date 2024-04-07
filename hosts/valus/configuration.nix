@@ -1,4 +1,4 @@
-{ lib, inputs, outputs, config, pkgs, pkgs-unstable, nix-colors, ... }:
+{ lib, inputs, outputs, config, pkgs, pkgs-unstable, colors, ... }:
 
 {
   imports =
@@ -97,8 +97,6 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
 
-  programs.solaar.enable = true;
-
   # programs.coolercontrol.enable = true;
 
   security.polkit = {
@@ -151,7 +149,7 @@
 
   home-manager = {
     extraSpecialArgs = {
-      inherit inputs outputs pkgs-unstable nix-colors;
+      inherit inputs outputs pkgs-unstable colors;
       vars = {
         hostName = config.networking.hostName;
       };
