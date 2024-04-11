@@ -35,7 +35,7 @@
       xrdb -merge ~/.Xresources
       xrdb -merge ~/.Xresources.colors
       xset r rate 160 60
-      hsetroot -solid "$(xrdb -query | grep 'background' | head -n1 | cut -f 2)"
+      hsetroot -solid "$(xrdb -query | grep 'desktop.background' | head -n1 | cut -f 2)"
       [[ ! -f ${config.xdg.configHome}/xsettingsd ]] && ln -s ${config.xdg.configHome}/xsettingsd.dark ${config.xdg.configHome}/xsettingsd;
     '';
   };

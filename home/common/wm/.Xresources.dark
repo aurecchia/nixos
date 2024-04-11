@@ -38,7 +38,7 @@
 *.color15: #c5c8c6
 
 
-background: #5F6777
+desktop.background: #5F6777
 
 i3.background: #101010
 i3.foreground: #ffffff

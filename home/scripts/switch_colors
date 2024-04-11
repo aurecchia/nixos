@@ -40,7 +40,7 @@ fi
 
 # Reload
 # Update WM background
-hsetroot -solid "$(xrdb -query | grep 'background' | head -n1 | cut -f 2)"
+hsetroot -solid "$(xrdb -query | grep 'desktop.background' | head -n1 | cut -f 2)"
 
 # Update i3
 i3-msg reload
