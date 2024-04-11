@@ -19,6 +19,11 @@
     };
 
     history = {
+      # Number of entries that are saved
+      save = 1000000;
+      # Number of entries that are loaded
+      size = 1000000;
+      ignoreAllDups = true;
       expireDuplicatesFirst = true;
     };
 
