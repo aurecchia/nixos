@@ -33,6 +33,9 @@
         source "$(fzf-share)/completion.zsh"
       fi
 
+      # lowercase matches both upper- and lowercase in completions
+      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
       AGKOZAK_PROMPT_DIRTRIM=4
       AGKOZAK_BLANK_LINES=1
       AGKOZAK_PROMPT_CHAR=( $ %# : )
