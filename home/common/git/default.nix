@@ -6,6 +6,17 @@
     userName = "Alessio Aurecchia";
     userEmail = "alessio@aurecchia.ch";
 
+    includes = [
+      { condition = "gitdir/i:valora/";
+        contents = {
+          user = {
+            name = "Alessio Aurecchia";
+            email = "alessio.aurecchia@valora.com";
+          };
+        };
+      }
+    ];
+
     delta = {
       enable = true;
       options = {
