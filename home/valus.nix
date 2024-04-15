@@ -53,6 +53,7 @@ in {
     pdftk
     xbanish
     xiccd
+    gnumake
 
     # Dev
     (with pkgs.dotnetCorePackages; combinePackages [
