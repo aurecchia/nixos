@@ -112,7 +112,6 @@ in {
     libnotify
     gpick
     nodejs
-    nodePackages.pnpm
     xorg.xcursorgen
     # httpie
     # httpie-oauth2-client-credentials
@@ -121,13 +120,15 @@ in {
     haiku-hand
     lxappearance
     xsettingsd
-  ] ++ [
-    pkgs-unstable.csvlens
-    (with pkgs-unstable.dotnetCorePackages; combinePackages [
+  ] ++ (with pkgs-unstable; [
+    # nodePackages.pnpm
+    corepack
+    csvlens
+    (with dotnetCorePackages; combinePackages [
       sdk_8_0_3xx
       sdk_8_0_2xx
     ])
-  ];
+  ]);
 
   programs.password-store = {
     enable = true;
