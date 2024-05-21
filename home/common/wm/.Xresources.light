@@ -1,21 +1,62 @@
+*.background: #151515
+*.foreground: #c5c6c8
+*.shaded:     #777777
+
+*.cursor: #ffa460
+*.selection_background: #707880
+*.selection_foreground: #ffffff
+
+! black
+*.color0: #282a2e
+*.color8: #373b41
+
+! red
+*.color1: #993d3d
+*.color9: #cc6666
+
+! green
+*.color2: #9fb33b
+*.color10: #b5bd68
+
+! yellow
+*.color3: #cc8e47
+*.color11: #f0c674
+
+! blue
+*.color4: #3a6899
+*.color12: #81a2be
+
+! magenta
+*.color5: #70478f
+*.color13: #b294bb
+
+! cyan
+*.color6: #468c8c
+*.color14: #8abeb7
+
+! white
+*.color7: #707880
+*.color15: #c5c8c6
+
+
 desktop.background: #5F7767
 
 i3.background: #101010
 i3.foreground: #ffffff
 i3.barDimmed: #666666
 
-i3.focusedBg: #005F87
+i3.focusedBg: #3a6899
 i3.focusedFg: #ffffff
-i3.focusedBorder: #005F87
-i3.indicator: #007FB4
+i3.focusedBorder: #3a6899
+i3.indicator: #3a6899
 
-i3.inactiveBg: #c9c9c9
-i3.inactiveFg: #111111
-i3.inactiveBorder: #c9c9c9
+i3.inactiveBg: #2a2a2a
+i3.inactiveFg: #585858
+i3.inactiveBorder: #2a2a2a
 
-i3.unfocusedBg: #c9c9c9
-i3.unfocusedFg: #222222
-i3.unfocusedBorder: #c9c9c9
+i3.unfocusedBg: #2a2a2a
+i3.unfocusedFg: #585858
+i3.unfocusedBorder: #000000
 
 i3.urgentBg: #900000
 i3.urgentFg: #ffffff
@@ -24,4 +65,3 @@ i3.urgentBorder: #2f343a
 i3.placeholderBg: #0c0c0c
 i3.placeholderFg: #ffffff
 i3.placeholderBorder: #0c0c0c
-

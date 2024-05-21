@@ -48,6 +48,11 @@ i3-msg reload
 killall -HUP xsettingsd
 
 # Update terminal emulator
-# kitty +kitten themes --reload-in=all "Solarized $(echo $background | sed 's/./\U&/')"
+# if [ $background = dark ]; then
+#   ln -sf ~/.config/kitty/auri_dark.conf ~/.config/kitty/auri_theme.conf;
+# else
+#   ln -sf ~/.config/kitty/auri_light.conf ~/.config/kitty/auri_theme.conf;
+# fi
 
-
+# Reload all kitties
+kill -s USR1 $(pidof kitty)

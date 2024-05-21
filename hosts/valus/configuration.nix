@@ -147,6 +147,11 @@
     via
   ];
 
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad-vpn;
+  };
+
   home-manager = {
     extraSpecialArgs = {
       inherit inputs outputs pkgs-unstable colors;

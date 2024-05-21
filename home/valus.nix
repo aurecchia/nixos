@@ -41,6 +41,9 @@ in {
 
   home.packages = with pkgs; [
     dejavu_fonts
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
     jetbrains-mono
     inter
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
@@ -56,10 +59,10 @@ in {
     gnumake
 
     # Dev
-    (with pkgs.dotnetCorePackages; combinePackages [
-      sdk_7_0
-      sdk_8_0
-    ])
+    # (with pkgs-unstable.dotnetCorePackages; combinePackages [
+    #   sdk_7_0_3xx
+    #   sdk_8_0_1xx
+    # ])
     (python3.withPackages (ps: with ps; [
       httpie
       httpie-oauth2-client-credentials
@@ -70,6 +73,7 @@ in {
     elixir_1_16
     inotify-tools
     xsv
+    pgcli
 
     nodePackages.vim-language-server
     difftastic
@@ -100,6 +104,8 @@ in {
     zathura
     telegram-desktop
     discord
+    libsForQt5.elisa
+
     wine
     docker-credential-helpers
     # m8c-stable
@@ -117,6 +123,10 @@ in {
     xsettingsd
   ] ++ [
     pkgs-unstable.csvlens
+    (with pkgs-unstable.dotnetCorePackages; combinePackages [
+      sdk_8_0_3xx
+      sdk_8_0_2xx
+    ])
   ];
 
   programs.password-store = {

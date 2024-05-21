@@ -41,7 +41,7 @@
       AGKOZAK_PROMPT_CHAR=( $ %# : )
       AGKOZAK_CUSTOM_SYMBOLS=( '⇣⇡' '⇣' '⇡' '+' 'x' '!' '>' '?' 'S')
 
-      ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=238"
+      ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=$(xrdb -query | grep '*.shaded' | head -n1 | cut -f 2)"
       ZSH_AUTOSUGGEST_STRATEGY=(completion history)
 
       autoload -U edit-command-line

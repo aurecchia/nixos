@@ -1,5 +1,6 @@
 *.background: #151515
 *.foreground: #c5c6c8
+*.shaded:     #484a4e
 
 *.cursor: #ffa460
 *.selection_background: #707880
@@ -38,16 +39,16 @@
 *.color15: #c5c8c6
 
 
-desktop.background: #5F6777
+desktop.background: #444955
 
 i3.background: #101010
 i3.foreground: #ffffff
 i3.barDimmed: #666666
 
-i3.focusedBg: #005F87
+i3.focusedBg: #3a6899
 i3.focusedFg: #ffffff
-i3.focusedBorder: #005F87
-i3.indicator: #007FB4
+i3.focusedBorder: #3a6899
+i3.indicator: #3a6899
 
 i3.inactiveBg: #2a2a2a
 i3.inactiveFg: #585858
