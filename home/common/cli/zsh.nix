@@ -9,7 +9,7 @@
     defaultKeymap = "emacs";
 
     enableCompletion = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
 
     cdpath = [ "~/repos/valora" ];
 

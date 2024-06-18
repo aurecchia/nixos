@@ -9,15 +9,19 @@
     _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
   };
 
+  services.libinput.enable = true;
+
+  services.displayManager.defaultSession = "xsession";
   services.xserver = {
     enable = true;
-    libinput.enable = true;
 
     # videoDrivers = [ "amdgpu-pro" ];
     videoDrivers = [ "amdgpu" ];
 
-    layout = "us";
-    xkbVariant = "altgr-intl";
+    xkb = {
+      layout = "us";
+      variant = "altgr-intl";
+    };
 
     resolutions = [
       { x = 3840; y = 2160; }
@@ -46,7 +50,6 @@
 
     displayManager = {
       lightdm.enable = true;
-      defaultSession = "xsession";
       session = [
         {
           manage = "desktop";
