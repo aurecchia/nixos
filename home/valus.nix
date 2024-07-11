@@ -6,6 +6,7 @@
   config,
   pkgs,
   pkgs-unstable,
+  pkgs-dotnet,
   nix-colors,
   ...
 }: 
@@ -95,6 +96,7 @@ in {
     hledger
     hledger-ui
     hledger-web
+    calibre
 
     chromium
     slack
@@ -124,11 +126,13 @@ in {
     # nodePackages.pnpm
     corepack
     csvlens
+  ]) ++ (with pkgs-dotnet; [
     (with dotnetCorePackages; combinePackages [
       sdk_8_0_3xx
       sdk_8_0_2xx
     ])
   ]);
+
 
   programs.password-store = {
     enable = true;

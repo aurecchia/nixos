@@ -1,4 +1,4 @@
-{ lib, inputs, outputs, config, pkgs, pkgs-unstable, colors, ... }:
+{ lib, inputs, outputs, config, pkgs, pkgs-unstable, pkgs-dotnet, colors, ... }:
 
 {
   imports =
@@ -155,7 +155,7 @@
 
   home-manager = {
     extraSpecialArgs = {
-      inherit inputs outputs pkgs-unstable colors;
+      inherit inputs outputs pkgs-unstable pkgs-dotnet colors;
       vars = {
         hostName = config.networking.hostName;
       };

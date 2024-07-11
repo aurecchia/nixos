@@ -5,6 +5,7 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs";
+    nixpkgs-dotnet.url = "github:nixos/nixpkgs/6113a9f660144427e7e79e868825611384a2f852";
 
     hardware.url = "github:nixos/nixos-hardware";
 
@@ -27,10 +28,16 @@
     # hardware.url = "github:nixos/nixos-hardware";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ...  } @ inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-dotnet, home-manager, ...  } @ inputs:
     let
       inherit (self) outputs;
       pkgs-unstable = import nixpkgs-unstable {
+        system = "x86_64-linux";
+        config = {
+          allowUnfree = true;
+        };
+      };
+      pkgs-dotnet = import nixpkgs-dotnet {
         system = "x86_64-linux";
         config = {
           allowUnfree = true;
@@ -40,7 +47,7 @@
     in {
       nixosConfigurations = {
         valus = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs pkgs-unstable colors; };
+          specialArgs = { inherit inputs outputs pkgs-unstable pkgs-dotnet colors; };
           modules = [
             ./hosts/valus/configuration.nix
           ];

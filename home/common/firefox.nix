@@ -3,6 +3,11 @@
 {
   programs.firefox = {
     enable = true;
+
+    nativeMessagingHosts = [
+      pkgs.tridactyl-native
+    ];
+
     profiles.auri = {
       extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
         bitwarden

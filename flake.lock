@@ -90,6 +90,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-dotnet": {
+      "locked": {
+        "lastModified": 1717357020,
+        "narHash": "sha256-PG5kLsZRD4ZlixTNqU6vPXPesVXei1Q8kCMRAHDKWso=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "6113a9f660144427e7e79e868825611384a2f852",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "6113a9f660144427e7e79e868825611384a2f852",
+        "type": "github"
+      }
+    },
     "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1718706584,
@@ -111,6 +127,7 @@
         "hardware": "hardware",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-dotnet": "nixpkgs-dotnet",
         "nixpkgs-unstable": "nixpkgs-unstable"
       }
     }
