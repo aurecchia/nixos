@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, environment, ... }:
 
 {
   programs.git = {
@@ -66,6 +66,7 @@
       };
       init = {
         defaultBranch = "main";
+        templateDir = "~/.config/git/template/";
       };
       merge = {
         tool = "nvimdiff";
@@ -77,5 +78,24 @@
       pager.branch = false;
       mergetool.keepBackup = false;
     };
+  };
+
+  home.file.".config/git/template/hooks/post-commit" = {
+    source = ./template/hooks/post-commit;
+  };
+  home.file.".config/git/template/hooks/post-checkout" = {
+    source = ./template/hooks/post-checkout;
+  };
+  home.file.".config/git/template/hooks/post-merge" = {
+    source = ./template/hooks/post-merge;
+  };
+  home.file.".config/git/template/hooks/post-rewrite" = {
+    source = ./template/hooks/post-rewrite;
+  };
+  home.file.".config/git/template/hooks/pre-push" = {
+    source = ./template/hooks/pre-push;
+  };
+  home.file.".config/git/template/hooks/update-submodules" = {
+    source = ./template/hooks/update-submodules;
   };
 }
