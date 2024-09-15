@@ -47,6 +47,9 @@ i3-msg reload
 
 killall -HUP xsettingsd
 
+# make sure to reload theme
+ln -sf ~/.config/kitty/auri_dark.conf ~/.config/kitty/auri_theme.conf;
+
 # Update terminal emulator
 # if [ $background = dark ]; then
 #   ln -sf ~/.config/kitty/auri_dark.conf ~/.config/kitty/auri_theme.conf;

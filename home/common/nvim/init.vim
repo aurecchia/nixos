@@ -190,7 +190,7 @@ inoremap [, [<CR>],<Esc>O
 
 " Colour {{{
 
-colorscheme jellybeans-nvim
+colorscheme jellybeans
 set colorcolumn=80,120
 
 " }}}

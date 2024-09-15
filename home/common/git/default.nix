@@ -21,15 +21,32 @@
       enable = true;
       options = {
         features = "line-numbers decorations";
+        navigate = true;
+        whitespace-error-style = "22 reverse";
+        decorations = {
+          zero-syle = "auto";
+          commit-decoration-style = "bold ul";
+          minus-style = "syntax dim #240000";
+          minus-emph-style = "normal #60090A";
+          plus-style = "syntax #001600";
+          plus-emph-style = "normal #004000";
+          file-style = "gray ul";
+          file-decoration-style = "none";
+          hunk-header-decoration-style = "none";
+          line-numbers-left-format = "{nm:^4}┊";
+          line-numbers-left-style = "#333333";
+          line-numbers-right-style = "#333333";
+        };
       };
     };
 
     extraConfig = {
       gpg.program = "gpg2";
       rebase = {
-        abbreviatedCommands = true;
-        autosquash = true;
-        autostash = true;
+        abbreviateCommands = true;
+        autosQuash = true;
+        autosTash = true;
+        udpateRefs = true;
         missingCommitsCheck = "warn";
       };
       alias = {
@@ -46,7 +63,8 @@
         re = "rebase -i origin/main --update-refs";
         ru = "remote update --prune";
         s = "status --short --branch --ahead-behind";
-        sw = "sw";
+        sw = "switch";
+        sh = "show --reverse origin/main..@";
         wip = "commit -am \"wip\"";
         gone = "!f() { git fetch --all --prune; git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D; }; f";
 

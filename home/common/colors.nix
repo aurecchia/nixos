@@ -1,7 +1,7 @@
 {}:
 {
   dark = {
-    background = "#151515";
+    background = "#0A0A0A";
     foreground = "#c5c6c8";
 
     cursor = "#ffa460";

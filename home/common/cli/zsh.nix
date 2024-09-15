@@ -16,6 +16,7 @@
     shellAliases = {
       la = "ls -ah";
       ll = "ls -lah";
+      n = "vim ~/repos/notes/notes.md";
     };
 
     history = {
@@ -37,8 +38,12 @@
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
       AGKOZAK_PROMPT_DIRTRIM=4
+      AGKOZAK_LEFT_PROMPT_ONLY=1
       AGKOZAK_BLANK_LINES=1
       AGKOZAK_PROMPT_CHAR=( $ %# : )
+      AGKOZAK_COLORS_USER_HOST=white
+      AGKOZAK_COLORS_PATH=gray
+      AGKOZAK_COLORS_CMD_EXEC_TIME=magenta
       AGKOZAK_CUSTOM_SYMBOLS=( '⇣⇡' '⇣' '⇡' '+' 'x' '!' '>' '?' 'S')
 
       ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=$(xrdb -query | grep '*.shaded' | head -n1 | cut -f 2)"

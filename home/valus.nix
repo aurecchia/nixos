@@ -46,6 +46,8 @@ in {
     noto-fonts-cjk
     noto-fonts-emoji
     jetbrains-mono
+    source-code-pro
+    ibm-plex
     inter
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 
@@ -58,6 +60,7 @@ in {
     xbanish
     xiccd
     gnumake
+    findutils
 
     # Dev
     # (with pkgs-unstable.dotnetCorePackages; combinePackages [
@@ -97,6 +100,8 @@ in {
     hledger-ui
     hledger-web
     calibre
+    transmission-gtk
+    gparted
 
     chromium
     slack

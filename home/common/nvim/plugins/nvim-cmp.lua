@@ -26,8 +26,6 @@ cmp.setup({
   mapping = cmp.mapping.preset.insert({
     ['<C-u>'] = cmp.mapping.scroll_docs(-5),
     ['<C-d>'] = cmp.mapping.scroll_docs(5),
-    -- ['<Up>'] = cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-    -- ['<Down>'] = cmp.select_next_item({ behavior = cmp.SelectBehavior.Select }),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-c>'] = cmp.mapping.abort(),
     ["<Tab>"] = cmp.mapping(function(fallback)
@@ -50,6 +48,7 @@ cmp.setup({
   }, {
     { name = 'buffer' },
   })
+
 })
 
 -- Set configuration for specific filetype.
@@ -71,10 +70,17 @@ cmp.setup.cmdline({ '/', '?' }, {
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
-  completion = { 
-    autocomplete = false,
-  },
+  mapping = cmp.mapping.preset.cmdline({
+    ['<C-u>'] = cmp.mapping.scroll_docs(-5),
+    ['<C-d>'] = cmp.mapping.scroll_docs(5),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-c>'] = cmp.mapping.abort(),
+    ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Set `select` to `false` to only confirm explicitly selected items.
+  }),
+  -- completion = { 
+  --   autocomplete = false,
+  -- },
   sources = cmp.config.sources({
     { name = 'path' }
   }, {
