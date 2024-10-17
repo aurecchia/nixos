@@ -50,7 +50,10 @@ in {
     ibm-plex
     inter
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    ia-writer-duospace
+    iosevka
 
+    dmidecode
     dconf
     xclip
     hsetroot
@@ -61,6 +64,7 @@ in {
     xiccd
     gnumake
     findutils
+    emojipick
 
     # Dev
     # (with pkgs-unstable.dotnetCorePackages; combinePackages [
@@ -89,6 +93,7 @@ in {
     via
     vial
     usbutils
+    ltunify
 
     gimp-with-plugins
     inkscape
@@ -102,6 +107,7 @@ in {
     calibre
     transmission-gtk
     gparted
+    kicad
 
     chromium
     slack
@@ -112,6 +118,10 @@ in {
     telegram-desktop
     discord
     libsForQt5.elisa
+    freecad
+    feh
+    qimgv
+    sqlite
 
     wine
     docker-credential-helpers
@@ -145,22 +155,42 @@ in {
 
   programs.thunderbird = {
     enable = true;
-    profiles.auri = {
-      isDefault = true;
-    };
+    profiles.auri.isDefault = true;
   };
 
   accounts.email.accounts = {
     auri = {
       primary = true;
       address = "alessio@aurecchia.ch";
-      thunderbird.enable = true;
       realName = "Alessio Aurecchia";
+      userName = "alessio.aurecchia@posteo.net";
+      passwordCommand = "${pkgs.bitwarden-cli}/bin/bw get password posteo.net";
+      imap = {
+        host = "posteo.de";
+        port = 993;
+        tls.enable = true;
+      };
+      smtp = {
+        host = "posteo.de";
+        port = 465;
+        tls.enable = true;
+      };
+
+      thunderbird.enable = true;
     };
     valora = {
       address = "alessio.aurecchia@valora.com";
-      thunderbird.enable = true;
       realName = "Alessio Aurecchia";
+      userName = "alessio.aurecchia@valora.com";
+      passwordCommand = "${pkgs.bitwarden-cli}/bin/bw get password 7be8c9bd-e09b-40c2-b60d-ac6700791bfe";
+      flavor = "outlook.office365.com";
+
+      # thunderbird = {
+      #   enable = true;
+        # settins = id: {
+        #   "mail.smtpserver.smtp_${id}.authMethod" = 10;
+        # };
+      # };
     };
   };
 
@@ -220,8 +250,6 @@ in {
   home.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
-    TERMINAL = "kitty";
-    TERM = "kitty";
     BROWSER = "firefox";
     GTK_SCALE = "2";
   };

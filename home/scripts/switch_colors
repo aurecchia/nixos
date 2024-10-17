@@ -47,6 +47,13 @@ i3-msg reload
 
 killall -HUP xsettingsd
 
+if [ $background = dark ]; then
+  ln -sf ~/.config/alacritty/auri_dark.toml ~/.config/alacritty/colors.toml;
+else
+  ln -sf ~/.config/alacritty/auri_light.toml ~/.config/alacritty/colors.toml;
+fi
+alacritty msg config "$(cat ~/.config/alacritty/colors.toml)"
+
 # make sure to reload theme
 ln -sf ~/.config/kitty/auri_dark.conf ~/.config/kitty/auri_theme.conf;
 

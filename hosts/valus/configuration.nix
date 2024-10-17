@@ -19,6 +19,13 @@
     efi.canTouchEfiVariables = true;
   };
 
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+
+  services.blueman.enable = true;
+
   networking = {
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     hostName = "valus";
@@ -62,6 +69,7 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   environment.systemPackages = with pkgs; [
@@ -79,6 +87,7 @@
     arandr
     polkit_gnome
     lutris
+    solaar
   ];
 
   environment.localBinInPath = true;

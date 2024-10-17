@@ -75,7 +75,23 @@ cmp.setup.cmdline(':', {
     ['<C-d>'] = cmp.mapping.scroll_docs(5),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-c>'] = cmp.mapping.abort(),
-    ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+    -- ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+    ['<Tab>'] = {
+      c = function(_)
+        if cmp.visible() then
+          if #cmp.get_entries() == 1 then
+            cmp.confirm({ select = true })
+          else
+            cmp.select_next_item()
+          end
+        else
+          cmp.complete()
+          if #cmp.get_entries() == 1 then
+            cmp.confirm({ select = true })
+          end
+        end
+      end,
+    },
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Set `select` to `false` to only confirm explicitly selected items.
   }),
   -- completion = { 
