@@ -45,8 +45,6 @@
   };
 
   home.file.".config/alacritty/auri_dark.toml".text = ''
-    # Based on Hybrid
-
     [colors.primary]
     background = '${colors.dark.background}'
     foreground = '${colors.dark.foreground}'
@@ -81,39 +79,37 @@
   '';
 
   home.file.".config/alacritty/auri_light.toml".text = ''
-    # Based on Ayu light
-
     [colors.primary]
-    background = '#fafafa'
-    foreground = '#5b6673'
+    background = '${colors.light.background}'
+    foreground = '${colors.light.foreground}'
 
     [colors.cursor]
-    cursor = '#ff6900'
-    text = '#5b6673'
+    cursor = '${colors.light.cursor}'
+    text =  '${colors.light.foreground}'
 
     [colors.selection]
-    background = '#f0ede4'
-    text = '#fafafa'
+    background = '${colors.light.selection_background}'
+    text = '${colors.light.selection_foreground}'
 
     [colors.normal]
-    black = '#000000'
-    red = '#ff3333'
-    green = '${colors.dark.color2}'
-    yellow = '#f19618'
-    blue = '#41a6d9'
-    magenta = '#f07078'
-    cyan = '#4cbe99'
-    white = '#ffffff'
+    black = '${colors.light.color0}'
+    red = '${colors.light.color1}'
+    green = '${colors.light.color2}'
+    yellow = '${colors.light.color3}'
+    blue = '${colors.light.color4}'
+    magenta = '${colors.light.color5}'
+    cyan = '${colors.light.color6}'
+    white = '${colors.light.color7}'
 
     [colors.bright]
-    black = '#323232'
-    red = '#ff6565'
-    green = '${colors.dark.color10}'
-    yellow = '#ffc849'
-    blue = '#73d7ff'
-    magenta = '#ffa3aa'
-    cyan = '#7ff0cb'
-    white = '#ffffff'
+    black = '${colors.light.color8}'
+    red = '${colors.light.color9}'
+    green = '${colors.light.color10}'
+    yellow = '${colors.light.color11}'
+    blue = '${colors.light.color12}'
+    magenta = '${colors.light.color13}'
+    cyan = '${colors.light.color14}'
+    white = '${colors.light.color15}'
   '';
 }
 

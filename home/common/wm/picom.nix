@@ -3,7 +3,7 @@
   services.picom = {
     enable = true;
     fade = true;
-    fadeDelta = 3;
+    fadeDelta = 5;
     # inactiveDim = "0.2";
     shadow = true;
     shadowOffsets = [ (-4) (-4) ];

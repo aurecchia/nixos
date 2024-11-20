@@ -4,7 +4,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-dotnet.url = "github:nixos/nixpkgs/6113a9f660144427e7e79e868825611384a2f852";
 
     hardware.url = "github:nixos/nixos-hardware";

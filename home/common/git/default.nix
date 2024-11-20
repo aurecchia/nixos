@@ -95,6 +95,7 @@
       };
       pager.branch = false;
       mergetool.keepBackup = false;
+      advice.detachedHead = false;
     };
   };
 

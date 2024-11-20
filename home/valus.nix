@@ -29,16 +29,7 @@ in {
 
   fonts.fontconfig.enable = true;
 
-  # home.file = {
-  #   ".Xresources".source = ./Xresources;
-  # };
   home.file."scripts/switch_colors".source = ./scripts/switch_colors;
-
-  home.file.".Xresources.light".source = ./common/wm/.Xresources.light;
-  home.file.".Xresources.dark".source = ./common/wm/.Xresources.dark;
-  xresources.extraConfig = ''
-    #include ".Xresources.colors"
-  '';
 
   home.packages = with pkgs; [
     dejavu_fonts
@@ -52,13 +43,14 @@ in {
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ia-writer-duospace
     iosevka
+    mona-sans
+    work-sans
 
     dmidecode
     dconf
     xclip
     hsetroot
     feh
-    typst
     pdftk
     xbanish
     xiccd
@@ -82,6 +74,7 @@ in {
     inotify-tools
     xsv
     pgcli
+    hub
 
     nodePackages.vim-language-server
     difftastic
@@ -122,6 +115,7 @@ in {
     feh
     qimgv
     sqlite
+    obs-studio
 
     wine
     docker-credential-helpers
@@ -141,6 +135,7 @@ in {
     # nodePackages.pnpm
     corepack
     csvlens
+    typst
   ]) ++ (with pkgs-dotnet; [
     (with dotnetCorePackages; combinePackages [
       sdk_8_0_3xx
