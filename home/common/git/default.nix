@@ -26,16 +26,16 @@
         decorations = {
           zero-syle = "auto";
           commit-decoration-style = "bold ul";
-          minus-style = "syntax dim #240000";
-          minus-emph-style = "normal #60090A";
-          plus-style = "syntax #001600";
-          plus-emph-style = "normal #004000";
-          file-style = "gray ul";
           file-decoration-style = "none";
           hunk-header-decoration-style = "none";
-          line-numbers-left-format = "{nm:^4}┊";
-          line-numbers-left-style = "#333333";
-          line-numbers-right-style = "#333333";
+          # minus-style = "syntax dim #240000";
+          # minus-emph-style = "normal #60090A";
+          # plus-style = "syntax #001600";
+          # plus-emph-style = "normal #004000";
+          # file-style = "gray ul";
+          # line-numbers-left-format = "{nm:^4}┊";
+          # line-numbers-left-style = "#333333";
+          # line-numbers-right-style = "#333333";
         };
       };
     };
@@ -91,10 +91,10 @@
         conflictstyle = "zdiff3";
       };
       mergetool = {
-        layout = "(LOCAL,MERGED,REMOTE)";
+        keepBackup = false;
+        vimdiff.layout = "MERGED+(LOCAL,BASE,REMOTE/MERGED)";
       };
       pager.branch = false;
-      mergetool.keepBackup = false;
       advice.detachedHead = false;
     };
   };

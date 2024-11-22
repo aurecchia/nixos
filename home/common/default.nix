@@ -6,7 +6,6 @@
     ./cli
     ./rofi
     ./kitty
-    ./alacritty
     ./git
     ./firefox.nix
     ./nvim
