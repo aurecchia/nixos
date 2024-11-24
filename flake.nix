@@ -52,6 +52,12 @@
             ./hosts/valus/configuration.nix
           ];
         };
+        avion = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs pkgs-unstable pkgs-dotnet colors; };
+          modules = [
+            ./hosts/valus/configuration.nix
+          ];
+        };
       };
     };
 }
