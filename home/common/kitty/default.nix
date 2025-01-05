@@ -58,48 +58,42 @@
   '';
 
   home.file.".config/kitty/auri_light.conf".text = ''
-    # Based on Ayu light
-    font_family      JetBrains Mono Bold
+    # Polar Colorscheme for Kitty
+    # Based on:
+    # - https://gist.github.com/marcusramberg/64010234c95a93d953e8c79fdaf94192
+    # - https://github.com/arcticicestudio/nord-hyper
 
-    background            #fafafa
-    foreground            #5b6673
+    active_border_color #81A1C1
 
-    cursor                #ff6900
-    selection_foreground  #fafafa
-    selection_background  #f0ede4
+    foreground            #2E3440
+    background            #F9FAFB
+    selection_foreground  #FFFACD
+    selection_background  #000000
+    url_color             #0087BD
+    cursor                #81A1C1
 
-    # black
-    color0                #000000
-    color8                #323232
+    color0   #3B4252
+    color8   #4C566A
 
-    # red
-    color1                #ff3333
-    color9                #ff6565
+    color1   #BF616A
+    color9   #BF616A
 
-    # green
-   #color2                #86b200
-   #color10               #b8e532
-    color2       ${colors.dark.color2}
-    color10      ${colors.dark.color10}
+    color2   #A3BE8C
+    color10  #A3BE8C
 
-    # yellow
-    color3                #f19618
-    color11               #ffc849
+    color3   #EBCB8B
+    color11  #EBCB8B
 
-    # blue
-    color4                #41a6d9
-    color12               #73d7ff
+    color4  #5E81AC
+    color12 #81A1C1
 
-    # magenta
-    color5                #f07078
-    color13               #ffa3aa
+    color5   #B48EAD
+    color13  #B48EAD
 
-    # cyan
-    color6                #4cbe99
-    color14               #7ff0cb
+    color6   #88C0D0
+    color14  #8FBCBB
 
-    # white
-    color7                #ffffff
-    color15               #ffffff
+    color7   #D8DEE9
+    color15  #E5E9F0
   '';
 }

@@ -1,5 +1,22 @@
 -- Set up nvim-cmp.
-local cmp = require'cmp'
+local cmp = require('cmp')
+local lspkind = require("lspkind")
+
+local select_next_item = function(fallback)
+  if cmp.visible() then
+    cmp.select_next_item()
+  else
+    fallback()
+  end
+end
+
+local select_prev_item = function(fallback)
+  if cmp.visible() then
+    cmp.select_prev_item()
+  else
+    fallback()
+  end
+end
 
 cmp.setup({
   snippet = {
@@ -7,65 +24,67 @@ cmp.setup({
       vim.fn["vsnip#anonymous"](args.body)
     end,
   },
+
   window = {
     completion = {
       col_offset = -3,
       side_padding = 0,
     },
   },
+
   formatting = {
     fields = { "kind", "abbr", "menu" },
+    -- Combine cmp_format with an aditiona symbol on the left
     format = function(entry, vim_item)
-      local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+      local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
       local strings = vim.split(kind.kind, "%s", { trimempty = true })
       kind.kind = " " .. (strings[1] or "") .. " "
-      kind.menu = "    (" .. (strings[2] or "") .. ")"
+      kind.menu = "   [" .. (strings[2] or "") .. "]"
       return kind
     end,
   },
-  mapping = cmp.mapping.preset.insert({
+
+  mapping = {
+    ['<Down>'] = cmp.mapping(select_next_item),
+    ['<Up>'] = cmp.mapping(select_next_item),
+    ['<C-n>'] = cmp.mapping(select_next_item),
+    ['<C-p>'] = cmp.mapping(select_next_item),
+
     ['<C-u>'] = cmp.mapping.scroll_docs(-5),
     ['<C-d>'] = cmp.mapping.scroll_docs(5),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-c>'] = cmp.mapping.abort(),
+
     ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           local entry = cmp.get_selected_entry()
           if not entry then
             cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-          else
-            cmp.confirm()
           end
+          cmp.confirm()
         else
           fallback()
         end
       end, { "i", "s", "c" }),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Set `select` to `false` to only confirm explicitly selected items.
-  }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  },
+
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'vsnip' },
+    { name = 'emoji' },
+    { name = 'path' },
   }, {
     { name = 'buffer' },
   })
 
 })
 
--- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
   sources = cmp.config.sources({
-    { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+    { name = 'git' },
+    { name = 'buffer' },
   }, {
     { name = 'buffer' },
   })
-})
-
--- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline({ '/', '?' }, {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = 'buffer' }
-  }
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
@@ -75,28 +94,20 @@ cmp.setup.cmdline(':', {
     ['<C-d>'] = cmp.mapping.scroll_docs(5),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-c>'] = cmp.mapping.abort(),
-    -- ["<Tab>"] = cmp.mapping.confirm({ select = true }),
-    ['<Tab>'] = {
-      c = function(_)
+    ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
-          if #cmp.get_entries() == 1 then
-            cmp.confirm({ select = true })
-          else
-            cmp.select_next_item()
+          local entry = cmp.get_selected_entry()
+          if not entry then
+            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
           end
+          cmp.confirm()
         else
-          cmp.complete()
-          if #cmp.get_entries() == 1 then
-            cmp.confirm({ select = true })
-          end
+          fallback()
         end
-      end,
-    },
+      end, { "i", "s", "c" }),
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Set `select` to `false` to only confirm explicitly selected items.
   }),
-  -- completion = { 
-  --   autocomplete = false,
-  -- },
+
   sources = cmp.config.sources({
     { name = 'path' }
   }, {

@@ -115,7 +115,9 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
 
+
   # programs.coolercontrol.enable = true;
+  programs.kdeconnect.enable = true;
 
   security.polkit = {
     enable = true;

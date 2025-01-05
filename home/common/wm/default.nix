@@ -71,21 +71,20 @@
 
     i3.background: #101010
     i3.foreground: #ffffff
-    i3.barDimmed: #666666
+    i3.barDimmed: ${colors.dark.dimmed}
 
-    i3.focusedBg: #3a6899
-    i3.focusedFg: #ffffff
-    i3.focusedBorder: ${colors.dark.color2}
-    i3.indicator: #3a6899
+    i3.focusedBg: ${colors.dark.color4}
+    i3.focusedFg: ${colors.dark.foreground}
+    i3.focusedBorder: ${colors.dark.color4}
+    i3.indicator: ${colors.dark.color4}
 
-    i3.inactiveBg: #2a2a2a
-    i3.inactiveFg: #585858
-    i3.inactiveBorder: #2a2a2a
+    i3.inactiveBg: ${colors.dark.color7}
+    i3.inactiveFg: ${colors.dark.color15}
+    i3.inactiveBorder: ${colors.dark.color7}
 
-    i3.unfocusedBg: #2a2a2a
-    i3.unfocusedFg: #585858
-    i3.unfocusedBorder: #000000
-
+    i3.unfocusedBg: ${colors.dark.color0}
+    i3.unfocusedFg: ${colors.dark.color7}
+    i3.unfocusedBorder: ${colors.dark.background}
 
     i3.urgentBg:${colors.dark.color2}
     i3.urgentFg: #ffffff

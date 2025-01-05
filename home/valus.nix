@@ -6,7 +6,6 @@
   config,
   pkgs,
   pkgs-unstable,
-  pkgs-dotnet,
   nix-colors,
   ...
 }: 
@@ -136,10 +135,10 @@ in {
     corepack
     csvlens
     typst
-  ]) ++ (with pkgs-dotnet; [
+  ]) ++ (with pkgs-unstable; [
     (with dotnetCorePackages; combinePackages [
+      sdk_9_0_1xx
       sdk_8_0_3xx
-      sdk_8_0_2xx
     ])
   ]);
 

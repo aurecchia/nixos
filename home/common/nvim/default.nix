@@ -101,9 +101,10 @@
       cmp-buffer
       cmp-path
       cmp-cmdline
+      cmp-emoji
+      cmp-git
       plenary-nvim
       lspkind-nvim
-      cmp-git
       {
         plugin = nvim-cmp;
         type = "lua";

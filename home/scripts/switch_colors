@@ -3,8 +3,10 @@
 # Determine mode
 if [ "$(readlink ~/.Xresources.colors)" = ".Xresources.light" ]; then
   background=dark
+  export THEME=dark
 else
   background=light
+  export THEME=light
 fi
 
 # A specific mode (light/dark) can be forced from the command line
@@ -55,15 +57,15 @@ killall -HUP xsettingsd
 # alacritty msg config "$(cat ~/.config/alacritty/colors.toml)"
 
 # make sure to reload theme
-ln -sf ~/.config/kitty/auri_dark.conf ~/.config/kitty/auri_theme.conf;
+# ln -sf ~/.config/kitty/auri_dark.conf ~/.config/kitty/auri_theme.conf;
 
 # FIXME Don't have a decent light theme for kitty
 # Update terminal emulator
-# if [ $background = dark ]; then
-#   ln -sf ~/.config/kitty/auri_dark.conf ~/.config/kitty/auri_theme.conf;
-# else
-#   ln -sf ~/.config/kitty/auri_light.conf ~/.config/kitty/auri_theme.conf;
-# fi
+if [ $background = dark ]; then
+  ln -sf ~/.config/kitty/auri_dark.conf ~/.config/kitty/auri_theme.conf;
+else
+  ln -sf ~/.config/kitty/auri_light.conf ~/.config/kitty/auri_theme.conf;
+fi
 
 # Reload all kitties
 kill -s USR1 $(pidof kitty)

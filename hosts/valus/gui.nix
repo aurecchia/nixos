@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
-{
+let
+  center_monitor="DisplayPort-2";
+  left_monitor="HDMI-A-0";
+in {
   console.font = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
 
   environment.variables = {
@@ -32,17 +35,17 @@
 
     xrandrHeads = [
       {
-        output = "DisplayPort-2";
+        output = center_monitor;
         primary = true;
         monitorConfig = ''
           Option "TearFree" "on"
         '';
       }
       {
-        output = "HDMI-A-0";
+        output = left_monitor;
         monitorConfig = ''
           Option "Rotate" "right"
-          Option "LeftOf" "DisplaPort-2"
+          Option "LeftOf" "${center_monitor}"
           Option "TearFree" "on"
         '';
       }
@@ -59,9 +62,7 @@
       ];
 
       setupCommands = ''
-        LEFT='HDMI-A-0'
-        CENTER='DisplayPort-2'
-        ${pkgs.xorg.xrandr}/bin/xrandr --output $CENTER --primary --output $LEFT --left-of $CENTER --rotate right
+        ${pkgs.xorg.xrandr}/bin/xrandr --output ${center_monitor} --primary --output ${left_monitor} --left-of ${center_monitor} --rotate right
       '';
     };
 
