@@ -62,7 +62,7 @@ in {
       ];
 
       setupCommands = ''
-        ${pkgs.xorg.xrandr}/bin/xrandr --output ${center_monitor} --primary --output ${left_monitor} --left-of ${center_monitor} --rotate right
+        ${pkgs.xorg.xrandr}/bin/xrandr --output ${center_monitor} --primary --mode 3840x2160 --pos 2160x655 --rotate normal --output ${left_monitor} --mode 3840x2160 --pos 0x0 --rotate right
       '';
     };
 

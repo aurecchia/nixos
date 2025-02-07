@@ -83,9 +83,6 @@ autocmd FileType fsharp setlocal commentstring=//\ %s
 autocmd FileType gitcommit set foldmethod=syntax
 autocmd FileType gitcommit setlocal nofoldenable
 
-" Don't hard wrap in Markdown
-autocmd FileType markdown set textwidth=0
-
 " Normalize split sizes
 au VimResized * exe "normal! \<c-w>="
 
@@ -158,8 +155,6 @@ set list
 set listchars=tab:→\ ,trail:•
 set showbreak=↪\ 
 set fillchars+=vert:\│
-
-set textwidth=80
 
 set diffopt=filler,iwhite,vertical
 

@@ -6,6 +6,7 @@
   config,
   pkgs,
   pkgs-unstable,
+  pkgs-dotnet,
   nix-colors,
   ...
 }: 
@@ -33,7 +34,7 @@ in {
   home.packages = with pkgs; [
     dejavu_fonts
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-emoji
     jetbrains-mono
     source-code-pro
@@ -57,11 +58,6 @@ in {
     findutils
     emojipick
 
-    # Dev
-    # (with pkgs-unstable.dotnetCorePackages; combinePackages [
-    #   sdk_7_0_3xx
-    #   sdk_8_0_1xx
-    # ])
     (python3.withPackages (ps: with ps; [
       httpie
       httpie-oauth2-client-credentials
@@ -97,9 +93,10 @@ in {
     hledger-ui
     hledger-web
     calibre
-    transmission-gtk
+    transmission_4-gtk
     gparted
     kicad
+    openscad
 
     chromium
     slack
@@ -135,10 +132,10 @@ in {
     corepack
     csvlens
     typst
-  ]) ++ (with pkgs-unstable; [
+    prusa-slicer
+  ]) ++ (with pkgs-dotnet; [
     (with dotnetCorePackages; combinePackages [
       sdk_9_0_1xx
-      sdk_8_0_3xx
     ])
   ]);
 
