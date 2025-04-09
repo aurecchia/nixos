@@ -56,7 +56,13 @@
         avion = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs pkgs-unstable pkgs-dotnet colors; };
           modules = [
-            ./hosts/valus/configuration.nix
+            ./hosts/avion/configuration.nix
+          ];
+        };
+        hydrus = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs pkgs-unstable; };
+          modules = [
+            ./hosts/hydrus/configuration.nix
           ];
         };
       };
