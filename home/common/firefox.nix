@@ -1,8 +1,10 @@
-{ inputs, pkgs, home, ... }:
+{ inputs, pkgs, home, pkgs-unstable, ... }:
 
 {
   programs.firefox = {
     enable = true;
+
+    package = pkgs-unstable.firefox;
 
     nativeMessagingHosts = [
       pkgs.tridactyl-native
@@ -18,6 +20,7 @@
         privacy-badger
         refined-github
         stylus
+        violentmonkey
         tridactyl
         ublock-origin
       ];
@@ -74,5 +77,5 @@
     "x-scheme-handler/https" = [ "firefox.desktop" ];
   };
   
-  home.sessionVariables.DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
+  home.sessionVariables.DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox-devedition";
 }

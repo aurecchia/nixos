@@ -105,6 +105,8 @@ in {
           { criteria = { title = "Preferences$"; }; command = "floating enable"; }
           { criteria = { title = "Gpick"; }; command = "floating enable"; }
           { criteria = { title = "Master Password"; }; command = "floating enable"; }
+          { criteria = { class = "scratchpad"; }; command = "move to scratchpad"; }
+          { criteria = { class = "scratchpad"; }; command = "move position center; resize set 1920 1080"; }
 
           # Fix floating popups in Jetbrains products
           # TODO: How to translate this?
@@ -215,6 +217,8 @@ in {
         "${mod}+Shift+n" = "move container to workspace next_on_output";
         "${mod}+Shift+p" = "move container to workspace prev_on_output";
 
+        "${mod}+`" = "scratchpad show";
+
         # modes
         "${mod}+r" = "mode \"${mode_resize}\"";
         "${mod}+Shift+q" = "mode \"${mode_system}\"";
@@ -239,6 +243,7 @@ in {
       startup = [
         { command = "i3wsr"; always = true; notification = false; }
         { command = "systemctl --user restart polybar"; always = true; notification = false; }
+        { command = "kitty --class scratchpad ~/scripts/notes"; always = true; notification = false; }
       ];
     };
 

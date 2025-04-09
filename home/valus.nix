@@ -30,6 +30,7 @@ in {
   fonts.fontconfig.enable = true;
 
   home.file."scripts/switch_colors".source = ./scripts/switch_colors;
+  home.file."scripts/notes".source = ./scripts/notes;
 
   home.packages = with pkgs; [
     dejavu_fonts
@@ -97,6 +98,8 @@ in {
     gparted
     kicad
     openscad
+    todoist-electron
+    todoist
 
     chromium
     slack
@@ -112,6 +115,7 @@ in {
     qimgv
     sqlite
     obs-studio
+    parsec-bin
 
     wine
     docker-credential-helpers

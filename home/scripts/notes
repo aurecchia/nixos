@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -e
+
+main() {
+  previous_file="$1"
+  file_to_edit=`select_file $previous_file`
+
+  if [ -n "$file_to_edit" ] ; then
+    "$EDITOR" "$file_to_edit"
+  fi
+  main "$file_to_edit"
+}
+
+select_file() {
+  given_file="$1"
+  find ~/repos/notes -type f -name "*.md" | fzf --preview="cat {}" --preview-window=right:70%:wrap
+}
+
+main ""
+

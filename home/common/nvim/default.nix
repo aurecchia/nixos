@@ -43,7 +43,7 @@
       nvim-lspconfig
       goyo-vim
       ir_black
-      # jellybeans-nvim
+      openscad-nvim
       {
         plugin = jellybeans-vim;
         config = ''
@@ -58,6 +58,10 @@
           \}
         '';
       }
+      oxocarbon-nvim
+      #github-nvim-theme
+      vscode-nvim
+      nvim-grey
       {
         plugin = lightline-vim;
         config = ''

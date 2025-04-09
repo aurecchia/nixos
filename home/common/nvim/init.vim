@@ -3,6 +3,7 @@
 filetype plugin indent on
 
 set spelllang=en_gb
+set spell
 set laststatus=2
 set cursorline
 set termguicolors
