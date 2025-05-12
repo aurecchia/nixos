@@ -61,7 +61,7 @@
       oxocarbon-nvim
       #github-nvim-theme
       vscode-nvim
-      nvim-grey
+      #nvim-grey
       {
         plugin = lightline-vim;
         config = ''

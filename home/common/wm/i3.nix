@@ -217,7 +217,6 @@ in {
         "${mod}+Shift+n" = "move container to workspace next_on_output";
         "${mod}+Shift+p" = "move container to workspace prev_on_output";
 
-        "${mod}+`" = "scratchpad show";
 
         # modes
         "${mod}+r" = "mode \"${mode_resize}\"";
@@ -238,6 +237,10 @@ in {
 
         "--release Print" = "exec mate-screenshot --interactive";
         "--release Shift+Print" = "exec mate-screenshot --area";
+      };
+
+      keycodebindings = {
+        "${mod}+49" = "[title=\"^notes\"] scratchpad show";
       };
 
       startup = [

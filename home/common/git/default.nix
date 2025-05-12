@@ -46,7 +46,7 @@
         abbreviateCommands = true;
         autosQuash = true;
         autosTash = true;
-        udpateRefs = true;
+        updateRefs = true;
         missingCommitsCheck = "warn";
       };
       alias = {
@@ -60,7 +60,7 @@
         main = "checkout origin/main";
         pf = "push --force-with-lease origin HEAD";
         pu = "push -u origin";
-        re = "rebase -i origin/main --update-refs";
+        re = "rebase -i origin/main";
         ru = "remote update --prune";
         s = "status --short --branch --ahead-behind";
         sw = "switch";

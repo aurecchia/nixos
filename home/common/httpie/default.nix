@@ -24,7 +24,7 @@
 # , responses
 # , werkzeug
 , pythonPackages
-, httpie-oauth2-client-credentials
+# , httpie-oauth2-client-credentials
 }:
 
 with pythonPackages;
@@ -63,7 +63,7 @@ buildPythonApplication rec {
     requests-toolbelt
     setuptools
     rich
-    httpie-oauth2-client-credentials
+    # httpie-oauth2-client-credentials
   ] ++ requests.optional-dependencies.socks;
 
   __darwinAllowLocalNetworking = true;

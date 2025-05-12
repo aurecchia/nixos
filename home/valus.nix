@@ -12,9 +12,9 @@
 }: 
 let 
   haiku-hand = (pkgs.callPackage ./common/haiku-hand/haiku-hand.nix {});
-  httpie-oauth2-client-credentials = (pkgs.callPackage ./common/httpie/httpie-oauth2-client-credentials.nix {
-    buildPythonPackage = pkgs.python3Packages.buildPythonPackage;
-  });
+  # httpie-oauth2-client-credentials = (pkgs.callPackage ./common/httpie/httpie-oauth2-client-credentials.nix {
+  #   buildPythonPackage = pkgs.python3Packages.buildPythonPackage;
+  # });
   # httpie = (pkgs.callPackage ./common/httpie/default.nix { 
   #   buildPythonApplication = pkgs.python3Packages.buildPythonApplication;
   #   httpie-oauth2-client-credentials = httpie-oauth2-client-credentials;
@@ -61,8 +61,8 @@ in {
 
     (python3.withPackages (ps: with ps; [
       httpie
-      httpie-oauth2-client-credentials
-      oauthlib
+      # httpie-oauth2-client-credentials
+      # oauthlib
     ]))
     terraform
     scrcpy
@@ -116,6 +116,8 @@ in {
     sqlite
     obs-studio
     parsec-bin
+    openttd
+    deadbeef-with-plugins
 
     wine
     docker-credential-helpers
@@ -124,8 +126,6 @@ in {
     gpick
     nodejs
     xorg.xcursorgen
-    # httpie
-    # httpie-oauth2-client-credentials
     deno
     mate.engrampa
     haiku-hand
@@ -137,6 +137,7 @@ in {
     csvlens
     typst
     prusa-slicer
+    renoise
   ]) ++ (with pkgs-dotnet; [
     (with dotnetCorePackages; combinePackages [
       sdk_9_0_1xx
