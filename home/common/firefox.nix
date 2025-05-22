@@ -77,5 +77,6 @@
     "x-scheme-handler/https" = [ "firefox.desktop" ];
   };
   
-  home.sessionVariables.DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox-devedition";
+  home.sessionVariables.DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
+  home.sessionVariables.BROWSER = "${pkgs.firefox}/bin/firefox";
 }

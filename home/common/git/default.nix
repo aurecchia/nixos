@@ -51,27 +51,21 @@
       };
       alias = {
         amend = "commit -a --amend --no-edit";
-        cb = "checkout -b";
         ci = "commit";
         co = "checkout";
-        fix = "commit --fixup HEAD";
         lg = "!git --no-pager log --graph --oneline --date=human -n 20";
         lga = "!git lg --exclude '*/renovate/*' --all";
         main = "checkout origin/main";
         pf = "push --force-with-lease origin HEAD";
-        pu = "push -u origin";
         re = "rebase -i origin/main";
         ru = "remote update --prune";
         s = "status --short --branch --ahead-behind";
-        sw = "switch";
         sh = "show --reverse origin/main..@";
         wip = "commit -am \"wip\"";
-        gone = "!f() { git fetch --all --prune; git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D; }; f";
-
-        lgnice = "
-          log --graph --abbrev-commit --decorate -n 30 \
+        gone = "!f() { git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D; }; f";
+        lgnice = "log --graph --abbrev-commit --decorate -n 30 \
           --format=format:'%C(bold blue)%h%C(reset)%C(auto)%d%C(reset)
-          %C(auto)%s%C(reset) %C(dim green)(%ae)%C(reset)'";
+         %C(auto)%s%C(reset) %C(dim green)(%ae)%C(reset)'";
       };
       commit = {
         verbose = true;

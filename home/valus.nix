@@ -110,7 +110,6 @@ in {
     telegram-desktop
     discord
     libsForQt5.elisa
-    freecad
     feh
     qimgv
     sqlite
@@ -138,6 +137,8 @@ in {
     typst
     prusa-slicer
     renoise
+    freecad
+    jujutsu
   ]) ++ (with pkgs-dotnet; [
     (with dotnetCorePackages; combinePackages [
       sdk_9_0_1xx
@@ -173,20 +174,6 @@ in {
       };
 
       thunderbird.enable = true;
-    };
-    valora = {
-      address = "alessio.aurecchia@valora.com";
-      realName = "Alessio Aurecchia";
-      userName = "alessio.aurecchia@valora.com";
-      passwordCommand = "${pkgs.bitwarden-cli}/bin/bw get password 7be8c9bd-e09b-40c2-b60d-ac6700791bfe";
-      flavor = "outlook.office365.com";
-
-      # thunderbird = {
-      #   enable = true;
-        # settins = id: {
-        #   "mail.smtpserver.smtp_${id}.authMethod" = 10;
-        # };
-      # };
     };
   };
 
@@ -246,7 +233,6 @@ in {
   home.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
-    BROWSER = "firefox";
     GTK_SCALE = "2";
   };
 
