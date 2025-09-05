@@ -40,10 +40,12 @@
   users.users.auri = {
     isNormalUser = true;
     description = "Alessio Aurecchia";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "media" ];
     packages = with pkgs; [];
     shell = pkgs.zsh;
   };
+
+  users.groups.media = {};
 
   nixpkgs.config.allowUnfree = true;
 
@@ -64,6 +66,31 @@
   environment.localBinInPath = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  services.radarr = {
+    enable = true;
+    group = "media";
+  };
+
+  services.sonarr = {
+    enable = true;
+    group = "media";
+  };
+
+  services.jellyfin = {
+    enable = true;
+    group = "media";
+  };
+
+  services.plex = {
+    enable = true;
+    group = "media";
+  };
+
+  services.immich = {
+    enable = true;
+    host = "0.0.0.0";
+  };
 
   services.nextcloud = {
     enable = true;
