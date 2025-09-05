@@ -3,16 +3,16 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    hardware.url = "github:nixos/nixos-hardware";
+    hardware.url = "github:nixos/nixos-hardware?rev=3c5e12673265dfb0de3d9121420c0c2153bf21e0";
 
     nixpkgs-dotnet.url = "github:nixos/nixpkgs/?rev=5f71945ecb996631a194890b16162e58a1f5e65f";
 
     # Home manager
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

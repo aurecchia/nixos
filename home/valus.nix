@@ -41,7 +41,7 @@ in {
     source-code-pro
     ibm-plex
     inter
-    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    pkgs.nerd-fonts.jetbrains-mono
     ia-writer-duospace
     iosevka
     mona-sans
@@ -66,9 +66,7 @@ in {
     ]))
     terraform
     scrcpy
-    elixir_1_16
     inotify-tools
-    xsv
     pgcli
     hub
 
@@ -77,6 +75,7 @@ in {
 
     bitwarden
     bitwarden-cli
+    timewarrior
     
     qmk
     via
@@ -100,11 +99,11 @@ in {
     openscad
     todoist-electron
     todoist
+    nb
 
     chromium
     slack
     vlc
-    mpv
     spotify
     zathura
     telegram-desktop
@@ -139,9 +138,10 @@ in {
     renoise
     freecad
     jujutsu
-  ]) ++ (with pkgs-dotnet; [
-    (with dotnetCorePackages; combinePackages [
-      sdk_9_0_1xx
+  ]) ++ ([
+    (pkgs.dotnetCorePackages.combinePackages [
+      pkgs.dotnetCorePackages.sdk_9_0_3xx
+      pkgs-dotnet.dotnetCorePackages.sdk_9_0_1xx
     ])
   ]);
 

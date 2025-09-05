@@ -94,7 +94,6 @@
           \}
         '';
       }
-      firenvim
       vim-nix
       denops-vim
       typst-vim
@@ -122,6 +121,8 @@
 
     extraConfig = builtins.readFile ./init.vim;
   };
+
+  home.file."${config.xdg.configHome}/nvim/after/ftplugin/markdown.vim".text = "setlocal spell spelllang=en_gb";
 
   xdg.desktopEntries = {
     nvim = {
