@@ -67,6 +67,8 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  services.glances.enable = true;
+
   services.radarr = {
     enable = true;
     group = "media";
